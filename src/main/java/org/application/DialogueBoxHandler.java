@@ -1,10 +1,8 @@
-package org.example;
+package org.application;
 
 import javax.swing.*;
 import javax.swing.border.AbstractBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -28,24 +26,24 @@ class RoundedBorder extends AbstractBorder {
 
 public class DialogueBoxHandler {
 
-    public volatile String dialogue_text = "cheese";
+    private String ciphertext;
 
-    public String return_str;
+    public String getCipherText() {
+        return ciphertext;
+    }
 
+    public void setCipherText(String text) {
+        ciphertext = text;
+        Main.OnCipherTextInput(ciphertext);
+    }
+
+    // constructor, empty for now. initialisation can go in main class, so practically useless? ill leave it in anyway
     public DialogueBoxHandler() {
 
     }
 
-    public String GetCipherText() throws UnsupportedLookAndFeelException, ClassNotFoundException, InstantiationException, IllegalAccessException, InterruptedException {
+    public void OpenCipherDialogue() throws UnsupportedLookAndFeelException, ClassNotFoundException, InstantiationException, IllegalAccessException, InterruptedException {
         OpenDialogue("Ciphertext Input", "Please input ciphertext: ");
-
-        while (dialogue_text == "cheese") {
-        }
-
-        return_str = dialogue_text;
-        dialogue_text = "";
-
-        return return_str;
     }
 
     public void OpenDialogue(String title, String prompt) throws UnsupportedLookAndFeelException, ClassNotFoundException, InstantiationException, IllegalAccessException {
@@ -87,7 +85,7 @@ public class DialogueBoxHandler {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     e.consume();
                     String userInput = inputField.getText();
-                    dialogue_text = userInput;
+                    setCipherText(userInput);
                     frame.setVisible(false);
                     frame.dispose();
                 }
