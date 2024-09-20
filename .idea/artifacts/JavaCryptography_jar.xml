@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="JavaCryptography:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/JavaCryptography_jar</output-path>
+    <root id="archive" name="JavaCryptography.jar">
+      <element id="module-output" name="JavaCryptography" />
+    </root>
+  </artifact>
+</component>
