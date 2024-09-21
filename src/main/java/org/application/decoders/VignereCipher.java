@@ -2,19 +2,25 @@ package org.application.decoders;
 
 import org.crypography_tools.Tools;
 
+import javax.tools.Tool;
+
 public class VignereCipher {
     public static String Decrypt(String ciphertext) {
         return "Not Implemented";
     }
 
-    public static int TryKeywordLength(String ciphertext, int length) {
+    public static double TryKeywordLength(String ciphertext, int length) {
         String[] cosets = Tools.MakeCosets(ciphertext, length);
 
         int sum = 0;
 
         for (String set : cosets) {
-            sum +=
+            sum += Tools.IndexOfCoincidence(set);
         }
+
+        double averageIOC = sum / length;
+
+        return averageIOC - Tools.EnglishIOC;
     }
 
     public static int GetKeywordLength(String ciphertext, int maxLength) {
@@ -25,6 +31,8 @@ public class VignereCipher {
     }
 
     public static String GetKeyword(String ciphertext) {
-        return "Not Implemented";
+        int KeywordLength = GetKeywordLength(ciphertext, 20);
+
+        return "N/I";
     }
 }

@@ -3,7 +3,7 @@ package org.application;
 import org.crypography_tools.Tools;
 
 import javax.swing.*;
-import java.text.Format;
+import java.util.Arrays;
 
 public class Main {
 
@@ -29,6 +29,9 @@ public class Main {
         for (String coset : cosets) {
             System.out.println(coset);
         }
+
+        System.out.println(Arrays.toString(Tools.AbsoluteFrequency(f_text)));
+        System.out.println(Arrays.toString(Tools.DecimalFrequency(f_text)));
 
     }
 }

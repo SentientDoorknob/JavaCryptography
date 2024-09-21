@@ -6,6 +6,8 @@ public class Tools {
 
     public static char[] Alphabet = "abcdefghijklmnopqrstuvwxyz".toCharArray();
 
+    public static double EnglishIOC = 0.667;
+
 
     public static String ApplyToLetters(String input, LambdaChar app) {
         return input.chars()
@@ -22,7 +24,7 @@ public class Tools {
     }
 
     public static int ToAlphabetIndex(char c) {
-        return (int)c - 65;
+        return (int)c - 97;
     }
 
     public static String[] MakeCosets(String text, int num) {
@@ -37,7 +39,7 @@ public class Tools {
         return cosets;
     }
 
-    public static int[] AbsouluteFrequency(String text) {
+    public static int[] AbsoluteFrequency(String text) {
 
         int[] output = new int[26];
 
@@ -49,7 +51,7 @@ public class Tools {
     }
 
     public static double[] DecimalFrequency(String text) {
-        int[] absoluteFrequencies = AbsouluteFrequency(text);
+        int[] absoluteFrequencies = AbsoluteFrequency(text);
 
         return Arrays.stream(absoluteFrequencies)
                 .mapToDouble(i -> (double) i / text.length())
@@ -59,8 +61,15 @@ public class Tools {
     public static double IndexOfCoincidence(String text) {
 
         int text_length = text.length();
-        double length_multiplier = 1 / (text_length * (text_length - 1) / 2);
+        double lengthMultiplier = 1 / (text_length * (text_length - 1) / 2);
 
+        int[] absoluteFrequencies = AbsoluteFrequency(text);
 
+        int sum = 0;
+        for (int frequency : absoluteFrequencies) {
+            sum += frequency * (frequency - 1) / 2;
+        }
+
+        return sum * lengthMultiplier;
     }
 }
