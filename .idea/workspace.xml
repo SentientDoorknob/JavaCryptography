@@ -9,15 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a228f945-501f-4b89-90c4-094fa1f5582c" name="Changes" comment="Added dialogue boxes">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/application/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/application/decoders/VignereCipher.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/crypography_tools/LambdaChar.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/crypography_tools/Tools.java" afterDir="false" />
+    <list default="true" id="a228f945-501f-4b89-90c4-094fa1f5582c" name="Changes" comment="stupid java boilerplaet">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DialogueBoxHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/DialogueBoxHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/application/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/application/decoders/VignereCipher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/decoders/VignereCipher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/crypography_tools/Tools.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/crypography_tools/Tools.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +102,31 @@
       <option name="project" value="LOCAL" />
       <updated>1726856171721</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added formatting and cosets">
+      <option name="closed" value="true" />
+      <created>1726861081640</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1726861081640</updated>
+    </task>
+    <task id="LOCAL-00003" summary="created shell for vignerecipher functions">
+      <option name="closed" value="true" />
+      <created>1726861122707</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1726861122707</updated>
+    </task>
+    <task id="LOCAL-00004" summary="stupid java boilerplaet">
+      <option name="closed" value="true" />
+      <created>1726861138746</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1726861138746</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -122,6 +142,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added dialogue boxes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added dialogue boxes" />
+    <MESSAGE value="Added formatting and cosets" />
+    <MESSAGE value="created shell for vignerecipher functions" />
+    <MESSAGE value="stupid java boilerplaet" />
+    <option name="LAST_COMMIT_MESSAGE" value="stupid java boilerplaet" />
   </component>
 </project>
