@@ -1,5 +1,6 @@
 package org.application;
 
+import org.application.decoders.VignereCipher;
 import org.crypography_tools.Tools;
 
 import javax.swing.*;
@@ -16,11 +17,9 @@ public class Main {
 
         boxHandler.OpenCipherDialogue();
 
-        System.out.println("2");
     }
 
     public static void OnCipherTextInput(String ciphertext) {
-        System.out.println("3");
 
         String f_text = Tools.Format(ciphertext);
 
@@ -30,8 +29,7 @@ public class Main {
             System.out.println(coset);
         }
 
-        System.out.println(Arrays.toString(Tools.AbsoluteFrequency(f_text)));
-        System.out.println(Arrays.toString(Tools.DecimalFrequency(f_text)));
+        System.out.println(VignereCipher.GetKeyword(f_text));
 
     }
 }

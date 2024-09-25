@@ -9,7 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a228f945-501f-4b89-90c4-094fa1f5582c" name="Changes" comment="added utility functions &amp; ioc">
+    <list default="true" id="a228f945-501f-4b89-90c4-094fa1f5582c" name="Changes" comment="added TryKeywordLength">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/application/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/application/decoders/VignereCipher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/decoders/VignereCipher.java" afterDir="false" />
@@ -66,7 +66,7 @@
     "project.structure.last.edited": "Artifacts",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "configurable.group.editor"
+    "settings.editor.selected.configurable": "preferences.keymap"
   }
 }]]></component>
   <component name="RunManager">
@@ -134,7 +134,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726919690523</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="added TryKeywordLength">
+      <option name="closed" value="true" />
+      <created>1726921457271</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1726921457271</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -154,7 +162,8 @@
     <MESSAGE value="created shell for vignerecipher functions" />
     <MESSAGE value="stupid java boilerplaet" />
     <MESSAGE value="added utility functions &amp; ioc" />
-    <option name="LAST_COMMIT_MESSAGE" value="added utility functions &amp; ioc" />
+    <MESSAGE value="added TryKeywordLength" />
+    <option name="LAST_COMMIT_MESSAGE" value="added TryKeywordLength" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -164,6 +173,10 @@
           <line>53</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.ArithmeticException" package="java.lang" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
