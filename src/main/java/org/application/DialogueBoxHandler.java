@@ -104,6 +104,7 @@ public class DialogueBoxHandler {
             public void keyPressed(KeyEvent e) {
                 // If Key is Enter, clear text area and print it out.
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    System.out.println(e.getKeyCode());
                     e.consume();
                     String userInput = inputField.getText();
                     try {
@@ -134,9 +135,6 @@ public class DialogueBoxHandler {
 
     public void OpenVignereOutput(int keywordLength, String keyword, String plaintext) {
 
-        Font plain_font = new Font("Consolas", Font.PLAIN, 15);
-        Font bold
-
         // Open Window
         JFrame frame = new JFrame("Vignere Cipher Output");
         frame.setSize(800, 600);
@@ -145,15 +143,19 @@ public class DialogueBoxHandler {
 
         frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
 
-        JLabel label1 = new JLabel("Vignere Cipher Analysis Output:");
-        JLabel label2 = new JLabel(format("<html>\tKeyword Length: <B>%d</B></html>", keywordLength));
-        JLabel label3 = new JLabel(format("<html>\tPredictedKeyword: <B>%s</B></html>", keyword));
+        String text = String.format("<html>Vignere Cipher Analysis Results:<br/>" +
+                "&nbsp;&nbsp;&nbsp;&nbsp;Keyword Length: <b>%d</b><br/>" +
+                "&nbsp;&nbsp;&nbsp;&nbsp;Predicted Keyword: <b>%s</b><html>", keywordLength, keyword);
 
-        label1.setFont();
+        JLabel vignereInfo = new JLabel(text);
+        vignereInfo.setFont(plain_font);
+        vignereInfo.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-        frame.add(label1);
-        frame.add(label2);
-        frame.add(label3);
+        JTextArea plaintextDisplay = new JTextArea(plaintext);
+        plaintextDisplay.setEditable(false);
+
+        frame.add(vignereInfo);
+        frame.add(plaintextDisplay);
 
         frame.setVisible(true);
 
