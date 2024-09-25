@@ -6,7 +6,7 @@ public class Tools {
 
     public static char[] Alphabet = "abcdefghijklmnopqrstuvwxyz".toCharArray();
 
-    public static double EnglishIOC = 0.667;
+    public static double EnglishIOC = 0.0667;
 
 
     public static String ApplyToLetters(String input, LambdaChar app) {
@@ -61,15 +61,15 @@ public class Tools {
     public static double IndexOfCoincidence(String text) {
 
         int text_length = text.length();
-        double lengthMultiplier = 1 / (text_length * (text_length - 1) / 2);
+        double lengthMultiplier = (text_length * (text_length - 1));
 
         int[] absoluteFrequencies = AbsoluteFrequency(text);
 
-        int sum = 0;
+        double sum = 0;
         for (int frequency : absoluteFrequencies) {
-            sum += frequency * (frequency - 1) / 2;
+            sum += frequency * (frequency - 1);
         }
 
-        return sum * lengthMultiplier;
+        return sum / lengthMultiplier;
     }
 }
