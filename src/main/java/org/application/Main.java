@@ -19,7 +19,7 @@ public class Main {
 
     }
 
-    public static void OnCipherTextInput(String ciphertext) {
+    public static void OnCipherTextInput(String ciphertext) throws UnsupportedLookAndFeelException, ClassNotFoundException, InstantiationException, IllegalAccessException {
 
         String f_text = Tools.Format(ciphertext);
 
@@ -30,6 +30,8 @@ public class Main {
         }
 
         System.out.println(VignereCipher.GetKeyword(f_text));
+
+        boxHandler.OpenVignereOutput(3, "cheese", "cheese yet again");
 
     }
 }
