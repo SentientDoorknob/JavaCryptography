@@ -1,6 +1,7 @@
 package org.crypography_tools;
 
 import java.util.Arrays;
+import java.util.stream.Collectors;
 
 public class Tools {
 
@@ -24,7 +25,7 @@ public class Tools {
     }
 
     public static int ToAlphabetIndex(char c) {
-        return (int)c - 97;
+        return (int) c - 97;
     }
 
     public static String[] MakeCosets(String text, int num) {
@@ -71,5 +72,33 @@ public class Tools {
         }
 
         return sum / lengthMultiplier;
+    }
+
+    public static String ShiftLetters(String letters, int by) {
+        return letters.chars()
+                .map(x -> Math.floorMod(x - 'a' + by, 26) + 'a')
+                .mapToObj(x -> (char) x)
+                .map(Object::toString)
+                .collect(Collectors.joining());
+    }
+
+    public static String Interleave(String[] cosets) {
+        StringBuilder output = new StringBuilder(); // Use StringBuilder for better performance
+
+        int i = 0;
+        boolean cont = true;
+
+        while (cont) {
+            cont = false; // Assume this will be the last iteration unless proven otherwise
+            for (String set : cosets) {
+                if (i < set.length()) {
+                    output.append(set.charAt(i));
+                    cont = true;
+                }
+            }
+            i++;
+        }
+
+        return output.toString();
     }
 }

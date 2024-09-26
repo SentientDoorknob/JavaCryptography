@@ -9,10 +9,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a228f945-501f-4b89-90c4-094fa1f5582c" name="Changes" comment="remove unnecessary debug messages">
+    <list default="true" id="a228f945-501f-4b89-90c4-094fa1f5582c" name="Changes" comment="added vignere display">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/application/DialogueBoxHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/DialogueBoxHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/application/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/application/decoders/VignereCipher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/decoders/VignereCipher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/crypography_tools/Tools.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/crypography_tools/Tools.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,7 +159,23 @@
       <option name="project" value="LOCAL" />
       <updated>1727285213901</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="put dialogue font sttings in constructor">
+      <option name="closed" value="true" />
+      <created>1727286968584</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1727286968584</updated>
+    </task>
+    <task id="LOCAL-00010" summary="added vignere display">
+      <option name="closed" value="true" />
+      <created>1727288761792</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1727288761792</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -180,14 +198,16 @@
     <MESSAGE value="added TryKeywordLength" />
     <MESSAGE value="finished vignerecipher decoder" />
     <MESSAGE value="remove unnecessary debug messages" />
-    <option name="LAST_COMMIT_MESSAGE" value="remove unnecessary debug messages" />
+    <MESSAGE value="put dialogue font sttings in constructor" />
+    <MESSAGE value="added vignere display" />
+    <option name="LAST_COMMIT_MESSAGE" value="added vignere display" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/crypography_tools/Tools.java</url>
-          <line>53</line>
+          <line>54</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">

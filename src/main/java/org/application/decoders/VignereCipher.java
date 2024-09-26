@@ -1,17 +1,26 @@
 package org.application.decoders;
 
+import org.application.Main;
 import org.crypography_tools.Tools;
 
+import javax.swing.*;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
 import static java.lang.Math.abs;
 
 public class VignereCipher {
-    private static final double VIGNERE_THRESHOLD = 0.005;
+    public static final double VIGNERE_THRESHOLD = 0.005;
+    public static final int MAX_KEYWORD_LENGTH = 30;
 
-    public static String Decrypt(String ciphertext) {
-        return "Not Implemented";
+    public static void Decrypt(String ciphertext) {
+        ciphertext = Tools.Format(ciphertext);
+
+        int keywordLength = GetKeywordLength(ciphertext, MAX_KEYWORD_LENGTH);
+        String keyword = GetKeywordWithGraphAndLength(ciphertext, keywordLength);
+        String plaintext = DecryptWithKeyword(ciphertext, keyword);
+
+        Main.boxHandler.OpenVignereOutput(keywordLength, keyword, plaintext, ciphertext);
     }
 
 
@@ -24,7 +33,6 @@ public class VignereCipher {
             sum += Tools.IndexOfCoincidence(set);
         }
 
-        System.out.printf("%s had an IOC of: %f\n", cosets[0], Tools.IndexOfCoincidence(cosets[0]));
 
         double averageIOC = sum / length;
 
@@ -42,7 +50,6 @@ public class VignereCipher {
             results[i] = TryKeywordLength(ciphertext, i);
         }
 
-        System.out.println(Arrays.toString(results));
 
         double min = Arrays.stream(results).filter(x -> x < VIGNERE_THRESHOLD).toArray()[0];
         int imin = Arrays.stream(results).boxed().collect(Collectors.toList()).indexOf(min);
@@ -63,17 +70,14 @@ public class VignereCipher {
 
         for (String set : cosets) {
             int[] frequencies = Tools.AbsoluteFrequency(set);
-            System.out.println(Arrays.toString(frequencies));
 
             int min = Arrays.stream(frequencies).max().orElseThrow();
             int imin = Arrays.stream(frequencies).boxed().collect(Collectors.toList()).indexOf(min);
 
             char keyword_character = (char) (Math.floorMod((imin - 4), 26) + 'a');
 
-            System.out.printf("CHAR %s\n", keyword_character);
 
             keyword += keyword_character;
-            keyword += " ";
         }
 
         return keyword;
@@ -84,5 +88,16 @@ public class VignereCipher {
         int KeywordLength = GetKeywordLength(ciphertext, 20);
 
         return GetKeywordWithGraphAndLength(ciphertext, KeywordLength);
+    }
+
+    public static String DecryptWithKeyword(String ciphertext, String keyword) {
+        int keywordLength = keyword.length();
+        String[] cosets = Tools.MakeCosets(ciphertext, keywordLength);
+
+        for (int i = 0; i < keywordLength; i++) {
+            cosets[i] = Tools.ShiftLetters(cosets[i], (keyword.charAt(i) - 'a') * -1);
+        }
+
+        return Tools.Interleave(cosets);
     }
 }

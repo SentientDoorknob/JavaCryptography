@@ -57,16 +57,12 @@ public class DialogueBoxHandler {
             UIManager.put("TextArea.font", plain_font);
         }
         catch (UnsupportedLookAndFeelException e) {
-            System.out.println("UnsupportedLookAndFeelException");
         }
         catch (ClassNotFoundException e) {
-            System.out.println("ClassNotFoundException");
         }
         catch (InstantiationException e) {
-            System.out.println("InstantiationException");
         }
         catch (IllegalAccessException e) {
-            System.out.println("IllegalAccessException");
         }
     }
 
@@ -104,7 +100,6 @@ public class DialogueBoxHandler {
             public void keyPressed(KeyEvent e) {
                 // If Key is Enter, clear text area and print it out.
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-                    System.out.println(e.getKeyCode());
                     e.consume();
                     String userInput = inputField.getText();
                     try {
@@ -133,7 +128,7 @@ public class DialogueBoxHandler {
     }
 
 
-    public void OpenVignereOutput(int keywordLength, String keyword, String plaintext) {
+    public void OpenVignereOutput(int keywordLength, String keyword, String plaintext, String ciphertext) {
 
         // Open Window
         JFrame frame = new JFrame("Vignere Cipher Output");
@@ -148,10 +143,12 @@ public class DialogueBoxHandler {
                 "&nbsp;&nbsp;&nbsp;&nbsp;Predicted Keyword: <b>%s</b><html>", keywordLength, keyword);
 
         JLabel vignereInfo = new JLabel(text);
+        vignereInfo.setAlignmentX(Component.CENTER_ALIGNMENT);
         vignereInfo.setFont(plain_font);
         vignereInfo.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
         JTextArea plaintextDisplay = new JTextArea(plaintext);
+        plaintextDisplay.setLineWrap(true);
         plaintextDisplay.setEditable(false);
 
         frame.add(vignereInfo);
