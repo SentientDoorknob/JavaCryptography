@@ -3,7 +3,6 @@ package org.application.decoders;
 import org.application.Main;
 import org.crypography_tools.Tools;
 
-import javax.swing.*;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
@@ -13,15 +12,23 @@ public class VignereCipher {
     public static final double VIGNERE_THRESHOLD = 0.005;
     public static final int MAX_KEYWORD_LENGTH = 30;
 
-    public static void Decrypt(String ciphertext) {
+    public static void DecryptWithResultsDialogue(String ciphertext) {
         ciphertext = Tools.Format(ciphertext);
 
         int keywordLength = GetKeywordLength(ciphertext, MAX_KEYWORD_LENGTH);
         String keyword = GetKeywordWithGraphAndLength(ciphertext, keywordLength);
         String plaintext = DecryptWithKeyword(ciphertext, keyword);
 
-        Main.boxHandler.OpenVignereOutput(keywordLength, keyword, plaintext, ciphertext);
+        Main.boxHandler.OpenVignereOutput(keyword, plaintext, ciphertext);
     }
+
+    public static void DecryptFromDialogue(String ciphertext, String keyword) {
+        ciphertext = Tools.Format(ciphertext);
+        String plaintext = DecryptWithKeyword(ciphertext, keyword);
+
+        Main.boxHandler.OpenVignereOutput(keyword, plaintext, ciphertext);
+    }
+
 
 
     public static double TryKeywordLength(String ciphertext, int length) {
@@ -95,6 +102,7 @@ public class VignereCipher {
         String[] cosets = Tools.MakeCosets(ciphertext, keywordLength);
 
         for (int i = 0; i < keywordLength; i++) {
+
             cosets[i] = Tools.ShiftLetters(cosets[i], (keyword.charAt(i) - 'a') * -1);
         }
 

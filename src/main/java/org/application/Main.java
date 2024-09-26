@@ -3,9 +3,6 @@ package org.application;
 import org.application.decoders.VignereCipher;
 import org.crypography_tools.Tools;
 
-import javax.swing.*;
-import java.util.Arrays;
-
 public class Main {
 
     public static DialogueBoxHandler boxHandler;
@@ -26,7 +23,7 @@ public class Main {
         for (String coset : cosets) {
         }
 
-        VignereCipher.Decrypt(f_text);
+        VignereCipher.DecryptWithResultsDialogue(f_text);
 
     }
 }
