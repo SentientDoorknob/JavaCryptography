@@ -9,8 +9,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a228f945-501f-4b89-90c4-094fa1f5582c" name="Changes" comment="finished vignere interface">
+    <list default="true" id="a228f945-501f-4b89-90c4-094fa1f5582c" name="Changes" comment="added affine cipher">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/application/DialogueBoxHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/DialogueBoxHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/application/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/application/decoders/AffineCipher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/decoders/AffineCipher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/crypography_tools/Tools.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/crypography_tools/Tools.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,8 +34,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -67,7 +71,7 @@
     "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
-  <component name="RunManager" selected="JAR Application.JavaCryptography.jar">
+  <component name="RunManager" selected="Application.Run">
     <configuration name="Run" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.application.Main" />
       <module name="JavaCryptography" />
@@ -197,7 +201,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727380979097</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="added affine cipher">
+      <option name="closed" value="true" />
+      <created>1727454646802</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1727454646802</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -224,7 +236,8 @@
     <MESSAGE value="added vignere display" />
     <MESSAGE value="inverted decryption direction in VGC" />
     <MESSAGE value="finished vignere interface" />
-    <option name="LAST_COMMIT_MESSAGE" value="finished vignere interface" />
+    <MESSAGE value="added affine cipher" />
+    <option name="LAST_COMMIT_MESSAGE" value="added affine cipher" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

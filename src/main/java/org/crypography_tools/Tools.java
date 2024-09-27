@@ -101,4 +101,11 @@ public class Tools {
 
         return output.toString();
     }
+
+    public static int ModularInverse(int dividend, int divisor) {
+        for (int X = 1; X < divisor; X++)
+            if (((dividend % divisor) * (X % divisor)) % divisor == 1)
+                return X;
+        return 1;
+    }
 }
