@@ -9,7 +9,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a228f945-501f-4b89-90c4-094fa1f5582c" name="Changes" comment="whoopsies finished that" />
+    <list default="true" id="a228f945-501f-4b89-90c4-094fa1f5582c" name="Changes" comment="rebuildeded artefacts">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/JavaCryptography_jar/JavaCryptography.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/JavaCryptography_jar/JavaCryptography.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/application/DialogueBoxHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/DialogueBoxHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/application/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/Main.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -62,11 +67,11 @@
     "project.structure.last.edited": "Artifacts",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.Java"
   }
 }]]></component>
   <component name="RunManager" selected="Application.Run">
-    <configuration name="Run" type="Application" factoryName="Application">
+    <configuration name="Run" type="Application" factoryName="Application" activateToolWindowBeforeRun="false">
       <option name="MAIN_CLASS_NAME" value="org.application.Main" />
       <module name="JavaCryptography" />
       <method v="2">
@@ -77,6 +82,10 @@
       <option name="JAR_PATH" value="$PROJECT_DIR$/out/artifacts/JavaCryptography_jar/JavaCryptography.jar" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Application.Run" />
+      <item itemvalue="JAR Application.JavaCryptography.jar" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="JAR Application.JavaCryptography.jar" />
@@ -211,7 +220,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727461953592</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="rebuildeded artefacts">
+      <option name="closed" value="true" />
+      <created>1727462000368</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1727462000368</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -240,7 +257,8 @@
     <MESSAGE value="finished vignere interface" />
     <MESSAGE value="added affine cipher" />
     <MESSAGE value="whoopsies finished that" />
-    <option name="LAST_COMMIT_MESSAGE" value="whoopsies finished that" />
+    <MESSAGE value="rebuildeded artefacts" />
+    <option name="LAST_COMMIT_MESSAGE" value="rebuildeded artefacts" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

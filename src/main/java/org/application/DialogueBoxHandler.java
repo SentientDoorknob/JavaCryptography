@@ -5,6 +5,8 @@ import org.application.decoders.VignereCipher;
 
 import javax.swing.*;
 import javax.swing.border.AbstractBorder;
+import javax.swing.border.EmptyBorder;
+import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -59,6 +61,7 @@ public class DialogueBoxHandler {
             UIManager.put("Label.font", plain_font);
             UIManager.put("Button.font", bold_font);
             UIManager.put("TextArea.font", plain_font);
+            UIManager.put("ComboBox.focus", new ColorUIResource(new Color(0, 0, 0, 0)));
         }
         catch (UnsupportedLookAndFeelException e) {
         }
@@ -70,8 +73,58 @@ public class DialogueBoxHandler {
         }
     }
 
+    public void OpenCipherInputDialogue(String[] ciphers) {
+        JFrame frame = new JFrame("Cipher Selection");
+        frame.setSize(800, 100);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLocationRelativeTo(null); // center on screen
 
-    public void OpenCipherDialogue() {
+        frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
+
+        JLabel label = new JLabel("Please Select Cipher:");
+        label.setAlignmentX(Component.LEFT_ALIGNMENT);
+        label.setBorder(BorderFactory.createEmptyBorder(3, 0, 3, 5));
+
+        JComboBox<String> cipherOptionDropdown = new JComboBox<String>(ciphers);
+        cipherOptionDropdown.setMaximumSize(new Dimension(800, 60));
+        cipherOptionDropdown.setAlignmentX(Component.LEFT_ALIGNMENT);
+        cipherOptionDropdown.setFont(plain_font);
+
+        cipherOptionDropdown.setFocusable(false);
+
+        JButton confirm = new JButton("Confirm");
+        JButton exit = new JButton("Exit");
+
+        confirm.setFocusable(false);
+        exit.setFocusable(false);
+
+        exit.addActionListener(e -> frame.dispose());
+        confirm.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.OnCipherSelection(cipherOptionDropdown.getSelectedItem().toString());
+                frame.dispose();
+            }
+        });
+
+        confirm.setMaximumSize(new Dimension(100, 60));
+        exit.setMaximumSize(new Dimension(75, 60));
+
+        JPanel inputPanel = new JPanel();
+        inputPanel.setLayout(new BoxLayout(inputPanel, BoxLayout.X_AXIS));
+        inputPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
+
+        inputPanel.add(cipherOptionDropdown);
+        inputPanel.add(confirm);
+        inputPanel.add(exit);
+
+        frame.add(label);
+        frame.add(inputPanel);
+
+        frame.setVisible(true);
+    }
+
+    public void OpenCiphertextInputDialogue() {
         OpenInputDialogue("Ciphertext Input", "Please input ciphertext: ");
     }
 
@@ -130,7 +183,6 @@ public class DialogueBoxHandler {
 
         frame.setVisible(true);
     }
-
 
     public void OpenVignereOutput(String keyword, String plaintext, String ciphertext) {
         // Open Window
@@ -198,14 +250,14 @@ public class DialogueBoxHandler {
 
     public void OpenAffineOutput(int[] key, String plaintext, String ciphertext) {
         // Open Window
-        JFrame frame = new JFrame("Affine");
+        JFrame frame = new JFrame("Affine Cipher");
         frame.setSize(800, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null); // Center on screen
 
         frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
 
-        String text = String.format("<html>Vignere Cipher Analysis Results:<br/>" +
+        String text = String.format("<html>Affine Cipher Analysis Results:<br/>" +
                 "&nbsp;&nbsp;&nbsp;&nbsp;Predicted Key: <b>%s</b><html>", Arrays.toString(key));
 
         JLabel vignereInfo = new JLabel(text);
