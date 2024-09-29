@@ -9,10 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a228f945-501f-4b89-90c4-094fa1f5582c" name="Changes" comment="rebuildeded artefacts">
+    <list default="true" id="a228f945-501f-4b89-90c4-094fa1f5582c" name="Changes" comment="added cipher choise GUI">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/application/decoders/PermutationCipher.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/crypography_tools/Digram.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/JavaCryptography_jar/JavaCryptography.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/JavaCryptography_jar/JavaCryptography.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/application/DialogueBoxHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/DialogueBoxHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/application/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -228,7 +228,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727462000368</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="added cipher choise GUI">
+      <option name="closed" value="true" />
+      <created>1727612269384</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1727612269384</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -258,7 +266,8 @@
     <MESSAGE value="added affine cipher" />
     <MESSAGE value="whoopsies finished that" />
     <MESSAGE value="rebuildeded artefacts" />
-    <option name="LAST_COMMIT_MESSAGE" value="rebuildeded artefacts" />
+    <MESSAGE value="added cipher choise GUI" />
+    <option name="LAST_COMMIT_MESSAGE" value="added cipher choise GUI" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
