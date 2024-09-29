@@ -2,6 +2,8 @@ package org.crypography_tools;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;
+import java.util.stream.DoubleStream;
+import java.util.stream.IntStream;
 
 public class Tools {
 
@@ -107,5 +109,10 @@ public class Tools {
             if (((dividend % divisor) * (X % divisor)) % divisor == 1)
                 return X;
         return 1;
+    }
+
+    public static double[] getColumn(double[][] matrix, int column) {
+        return IntStream.range(0, matrix.length)
+                .mapToDouble(i -> matrix[i][column]).toArray();
     }
 }

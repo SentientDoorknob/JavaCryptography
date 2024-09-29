@@ -29,8 +29,6 @@ public class VignereCipher {
         Main.boxHandler.OpenVignereOutput(keyword, plaintext, ciphertext);
     }
 
-
-
     public static double TryKeywordLength(String ciphertext, int length) {
         String[] cosets = Tools.MakeCosets(ciphertext, length);
 
@@ -45,7 +43,6 @@ public class VignereCipher {
 
         return abs(averageIOC - Tools.EnglishIOC);
     }
-
 
     public static int GetKeywordLength(String ciphertext, int maxLength) {
 
@@ -64,11 +61,9 @@ public class VignereCipher {
         return imin;
     }
 
-
     public static String GetKeywordWithLength(String ciphertext, int length) {
         return "N/I";
     }
-
 
     public static String GetKeywordWithGraphAndLength(String ciphertext, int length) {
         String[] cosets = Tools.MakeCosets(ciphertext, length);
@@ -89,7 +84,6 @@ public class VignereCipher {
 
         return keyword;
     }
-
 
     public static String GetKeyword(String ciphertext) {
         int KeywordLength = GetKeywordLength(ciphertext, 20);

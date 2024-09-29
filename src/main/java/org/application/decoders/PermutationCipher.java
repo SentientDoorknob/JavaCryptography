@@ -3,6 +3,10 @@ package org.application.decoders;
 import org.crypography_tools.Digram;
 import org.crypography_tools.Tools;
 
+import java.util.Arrays;
+import java.util.OptionalDouble;
+import java.util.stream.Collectors;
+
 public class PermutationCipher {
     public static double evaluateColumnPair(String c1, String c2) {
         if (c1.equals(c2)) {
@@ -55,4 +59,56 @@ public class PermutationCipher {
 
         return evaluateCiphertext(ciphertext, length + 1);
     }
+
+    public static String getKeyword(String ciphertext) {
+        double[][] results = evaluateCiphertext(ciphertext, 3);
+        return AnalyseResults(results);
+    }
+
+    public static String getKeywordFromLength(String ciphertext, int length) {
+        double[][] results = evaluateCiphertext(ciphertext, length);
+        return AnalyseResults(results);
+    }
+
+    public static String AnalyseResults(double[][] results) {
+        int emptyColumn = 1;
+
+        for (int i = 0; i < results.length; i++) {
+            boolean isNegative = Arrays.stream(Tools.getColumn(results, i)).allMatch(x -> x < 0);
+            if (isNegative) {emptyColumn = i;}
+        }
+
+        String keyword = "";
+
+        for (int i = 0; i < results.length; i++) {
+            keyword += emptyColumn;
+
+            double maxValue = Arrays.stream(results[emptyColumn]).max().orElseThrow();
+            emptyColumn = Arrays.stream(results[emptyColumn]).boxed().collect(Collectors.toList()).indexOf(maxValue);
+        }
+
+        return keyword;
+    }
+
+    public static String DecryptWithKeyword(String ciphertext, String keyword) {
+        int keywordLength = keyword.length();
+        String[] cosets = Tools.MakeCosets(ciphertext, keywordLength);
+
+        String[] permutedCosets = new String[keywordLength];
+
+        for (int i = 0; i < keywordLength; i++) {
+            permutedCosets[i] = cosets[keyword.charAt(i) - '0'];
+        }
+
+        return Tools.Interleave(permutedCosets);
+    }
+
+    public static void DecryptWithResultsDialogue(String ciphertext) {
+        String keyword = getKeyword(ciphertext);
+        System.out.println(keyword);
+
+        String plaintext = DecryptWithKeyword(ciphertext, keyword);
+        System.out.println(plaintext);
+    }
+
 }
