@@ -1,5 +1,6 @@
 package org.application.decoders;
 
+import org.application.Main;
 import org.crypography_tools.Digram;
 import org.crypography_tools.Tools;
 
@@ -60,28 +61,24 @@ public class PermutationCipher {
         return evaluateCiphertext(ciphertext, length + 1);
     }
 
-    public static String getKeyword(String ciphertext) {
+    public static int[] getKeyword(String ciphertext) {
         double[][] results = evaluateCiphertext(ciphertext, 3);
         return AnalyseResults(results);
     }
 
-    public static String getKeywordFromLength(String ciphertext, int length) {
-        double[][] results = evaluateCiphertext(ciphertext, length);
-        return AnalyseResults(results);
-    }
-
-    public static String AnalyseResults(double[][] results) {
+    public static int[] AnalyseResults(double[][] results) {
         int emptyColumn = 1;
+        int keywordLength = results.length;
 
-        for (int i = 0; i < results.length; i++) {
-            boolean isNegative = Arrays.stream(Tools.getColumn(results, i)).allMatch(x -> x < 0);
+        for (int i = 0; i < keywordLength; i++) {
+            boolean isNegative = Arrays.stream(Tools.GetColumn(results, i)).allMatch(x -> x < 0);
             if (isNegative) {emptyColumn = i;}
         }
 
-        String keyword = "";
+        int[] keyword = new int[keywordLength];
 
-        for (int i = 0; i < results.length; i++) {
-            keyword += emptyColumn;
+        for (int i = 0; i < keywordLength; i++) {
+            keyword[i] = emptyColumn;
 
             double maxValue = Arrays.stream(results[emptyColumn]).max().orElseThrow();
             emptyColumn = Arrays.stream(results[emptyColumn]).boxed().collect(Collectors.toList()).indexOf(maxValue);
@@ -90,25 +87,33 @@ public class PermutationCipher {
         return keyword;
     }
 
-    public static String DecryptWithKeyword(String ciphertext, String keyword) {
-        int keywordLength = keyword.length();
+    public static String DecryptWithKeyword(String ciphertext, int[] keyword) {
+        int keywordLength = keyword.length;
         String[] cosets = Tools.MakeCosets(ciphertext, keywordLength);
 
         String[] permutedCosets = new String[keywordLength];
 
         for (int i = 0; i < keywordLength; i++) {
-            permutedCosets[i] = cosets[keyword.charAt(i) - '0'];
+            permutedCosets[i] = cosets[keyword[i]];
         }
 
         return Tools.Interleave(permutedCosets);
     }
 
     public static void DecryptWithResultsDialogue(String ciphertext) {
-        String keyword = getKeyword(ciphertext);
-        System.out.println(keyword);
-
+        int[] keyword = getKeyword(ciphertext);
         String plaintext = DecryptWithKeyword(ciphertext, keyword);
-        System.out.println(plaintext);
+
+        Main.boxHandler.OpenPermutationOutput(keyword, keyword, plaintext, ciphertext);
+    }
+
+    public static void DecryptFromResultsDialogue(String ciphertext, String[] keyword, int[] predictedKeyword) {
+        System.out.println(Arrays.toString(keyword));
+        int[] reducedKeyword = Tools.ReducePermutationKeyword(Arrays.stream(keyword).mapToInt(x -> Integer.parseInt(x)).toArray());
+        System.out.println(Arrays.toString(reducedKeyword));
+        String plaintext = DecryptWithKeyword(ciphertext, reducedKeyword);
+
+        Main.boxHandler.OpenPermutationOutput(predictedKeyword, reducedKeyword, plaintext, ciphertext);
     }
 
 }

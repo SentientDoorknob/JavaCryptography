@@ -19,14 +19,14 @@ public class VignereCipher {
         String keyword = GetKeywordWithGraphAndLength(ciphertext, keywordLength);
         String plaintext = DecryptWithKeyword(ciphertext, keyword);
 
-        Main.boxHandler.OpenVignereOutput(keyword, plaintext, ciphertext);
+        Main.boxHandler.OpenVignereOutput(keyword, keyword, plaintext, ciphertext);
     }
 
-    public static void DecryptFromDialogue(String ciphertext, String keyword) {
+    public static void DecryptFromDialogue(String ciphertext, String keyword, String predictedKeyword) {
         ciphertext = Tools.Format(ciphertext);
         String plaintext = DecryptWithKeyword(ciphertext, keyword);
 
-        Main.boxHandler.OpenVignereOutput(keyword, plaintext, ciphertext);
+        Main.boxHandler.OpenVignereOutput(predictedKeyword, keyword, plaintext, ciphertext);
     }
 
     public static double TryKeywordLength(String ciphertext, int length) {

@@ -62,14 +62,14 @@ public class AffineCipher {
         int[] key = GetAffineKey(ciphertext);
         String plaintext = DecryptWithKey(ciphertext, key);
 
-        Main.boxHandler.OpenAffineOutput(key, plaintext, ciphertext);
+        Main.boxHandler.OpenAffineOutput(key, key, plaintext, ciphertext);
     }
 
-    public static void DecryptFromDialogue(String ciphertext, String[] et) {
+    public static void DecryptFromDialogue(String ciphertext, String[] et, int[] predictedKey) {
         int[] key = GetKeyWithLetters(et[0].charAt(0) - 'a', et[1].charAt(0) - 'a');
         String plaintext = DecryptWithKey(ciphertext, key);
 
-        Main.boxHandler.OpenAffineOutput(key, plaintext, ciphertext);
+        Main.boxHandler.OpenAffineOutput(predictedKey, key, plaintext, ciphertext);
     }
 
 

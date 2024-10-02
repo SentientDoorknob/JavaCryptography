@@ -1,6 +1,7 @@
 package org.application;
 
 import org.application.decoders.AffineCipher;
+import org.application.decoders.PermutationCipher;
 import org.application.decoders.VignereCipher;
 
 import javax.swing.*;
@@ -146,6 +147,8 @@ public class DialogueBoxHandler {
         JTextArea inputField = new JTextArea();
         inputField.setLineWrap(true);
 
+        JScrollPane inputPane = new JScrollPane(inputField);
+
         // Add Key Processor
         inputField.addKeyListener(new KeyListener() {
             @Override
@@ -179,12 +182,12 @@ public class DialogueBoxHandler {
         );
 
         frame.add(label, BorderLayout.NORTH);
-        frame.add(inputField, BorderLayout.CENTER);
+        frame.add(inputPane, BorderLayout.CENTER);
 
         frame.setVisible(true);
     }
 
-    public void OpenVignereOutput(String keyword, String plaintext, String ciphertext) {
+    public void OpenVignereOutput(String predictedKeyword, String usedKeyword, String plaintext, String ciphertext) {
         // Open Window
         JFrame frame = new JFrame("Vignere Cipher Output");
         frame.setSize(800, 600);
@@ -193,9 +196,10 @@ public class DialogueBoxHandler {
 
         frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
 
-        String text = String.format("<html>Vignere Cipher Analysis Results:<br/>" +
+        String text = String.format("<html>Permutation Cipher Analysis Results:<br/>" +
                 "&nbsp;&nbsp;&nbsp;&nbsp;Keyword Length: <b>%d</b><br/>" +
-                "&nbsp;&nbsp;&nbsp;&nbsp;Predicted Keyword: <b>%s</b><html>", keyword.length(), keyword);
+                "&nbsp;&nbsp;&nbsp;&nbsp;Predicted Keyword: <b>%s</b><html><br/>" +
+                "&nbsp;&nbsp;&nbsp;&nbsp;Used Keyword: <b>%s</b><html>", usedKeyword.length(), predictedKeyword, usedKeyword);
 
         JLabel vignereInfo = new JLabel(text);
         vignereInfo.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -214,7 +218,7 @@ public class DialogueBoxHandler {
         inputPanel.setLayout(new BoxLayout(inputPanel, BoxLayout.X_AXIS));
 
         // Input field for the keyword
-        JTextField keywordInput = new JTextField(keyword);
+        JTextField keywordInput = new JTextField(usedKeyword);
         keywordInput.setMaximumSize(new Dimension(800, 60)); // Adjusted to allow more width
         keywordInput.setAlignmentX(Component.CENTER_ALIGNMENT);
         keywordInput.setFont(bold_font);
@@ -231,7 +235,7 @@ public class DialogueBoxHandler {
         retry.addActionListener(new ActionListener() {
                                     @Override
                                     public void actionPerformed(ActionEvent e) {
-                                        VignereCipher.DecryptFromDialogue(ciphertext, keywordInput.getText());
+                                        VignereCipher.DecryptFromDialogue(ciphertext, keywordInput.getText(), predictedKeyword);
                                         frame.dispose();
                                     }
         });
@@ -248,7 +252,7 @@ public class DialogueBoxHandler {
 
     }
 
-    public void OpenAffineOutput(int[] key, String plaintext, String ciphertext) {
+    public void OpenAffineOutput(int[] predictedKey, int[] usedKey, String plaintext, String ciphertext) {
         // Open Window
         JFrame frame = new JFrame("Affine Cipher");
         frame.setSize(800, 600);
@@ -257,8 +261,9 @@ public class DialogueBoxHandler {
 
         frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
 
-        String text = String.format("<html>Affine Cipher Analysis Results:<br/>" +
-                "&nbsp;&nbsp;&nbsp;&nbsp;Predicted Key: <b>%s</b><html>", Arrays.toString(key));
+        String text = String.format("<html>Permutation Cipher Analysis Results:<br/>" +
+                "&nbsp;&nbsp;&nbsp;&nbsp;Predicted Keyword: <b>%s</b><html><br/>" +
+                "&nbsp;&nbsp;&nbsp;&nbsp;Used Keyword: <b>%s</b><html>", Arrays.toString(predictedKey), Arrays.toString(usedKey));
 
         JLabel vignereInfo = new JLabel(text);
         vignereInfo.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -294,7 +299,7 @@ public class DialogueBoxHandler {
         retry.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                AffineCipher.DecryptFromDialogue(ciphertext, keywordInput.getText().trim().split(",[ ]*"));
+                AffineCipher.DecryptFromDialogue(ciphertext, keywordInput.getText().trim().split(",[ ]*"), predictedKey);
                 frame.dispose();
             }
         });
@@ -304,6 +309,70 @@ public class DialogueBoxHandler {
 
         // Add components to the frame
         frame.add(vignereInfo);
+        frame.add(scrollPane);
+        frame.add(inputPanel);
+
+        frame.setVisible(true);
+    }
+
+    public void OpenPermutationOutput(int[] predictedKeyword, int[] usedKeyword, String plaintext, String ciphertext) {
+        // Open Window
+        JFrame frame = new JFrame("Permutation Cipher Output");
+        frame.setSize(800, 600);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLocationRelativeTo(null); // Center on screen
+
+        frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
+
+        String text = String.format("<html>Permutation Cipher Analysis Results:<br/>" +
+                "&nbsp;&nbsp;&nbsp;&nbsp;Keyword Length: <b>%d</b><br/>" +
+                "&nbsp;&nbsp;&nbsp;&nbsp;Predicted Keyword: <b>%s</b><html><br/>" +
+                "&nbsp;&nbsp;&nbsp;&nbsp;Used Keyword: <b>%s</b><html>", predictedKeyword.length, Arrays.toString(predictedKeyword), Arrays.toString(usedKeyword));
+
+        JLabel permutationInfo = new JLabel(text);
+        permutationInfo.setAlignmentX(Component.CENTER_ALIGNMENT);
+        permutationInfo.setFont(plain_font);
+        permutationInfo.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+        JTextArea plaintextDisplay = new JTextArea(plaintext);
+        plaintextDisplay.setLineWrap(true);
+        plaintextDisplay.setEditable(false);
+        plaintextDisplay.setAlignmentX(Component.CENTER_ALIGNMENT);
+        JScrollPane scrollPane = new JScrollPane(plaintextDisplay);
+        scrollPane.setAlignmentX(Component.CENTER_ALIGNMENT);
+        scrollPane.setPreferredSize(new Dimension(800, 100));
+
+        JPanel inputPanel = new JPanel();
+        inputPanel.setLayout(new BoxLayout(inputPanel, BoxLayout.X_AXIS));
+
+        // Input field for the keyword
+        JTextField keywordInput = new JTextField(Arrays.toString(predictedKeyword));
+        keywordInput.setMaximumSize(new Dimension(800, 60)); // Adjusted to allow more width
+        keywordInput.setAlignmentX(Component.CENTER_ALIGNMENT);
+        keywordInput.setFont(bold_font);
+
+        JButton retry = new JButton("Retry");
+        JButton exit = new JButton("Exit");
+
+        inputPanel.add(keywordInput);
+        inputPanel.add(retry);
+        inputPanel.add(exit);
+
+        exit.addActionListener(e -> frame.dispose());
+
+        retry.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                PermutationCipher.DecryptFromResultsDialogue(ciphertext, keywordInput.getText().replaceAll("[^\\d|,]", "").split(","), predictedKeyword);
+                frame.dispose();
+            }
+        });
+
+        // Optional: Add an empty border for better spacing
+        keywordInput.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+
+        // Add components to the frame
+        frame.add(permutationInfo);
         frame.add(scrollPane);
         frame.add(inputPanel);
 

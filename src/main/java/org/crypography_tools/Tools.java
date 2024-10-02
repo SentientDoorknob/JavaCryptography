@@ -1,15 +1,26 @@
 package org.crypography_tools;
 
 import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
+
+import static java.util.Collections.sort;
 
 public class Tools {
 
     public static char[] Alphabet = "abcdefghijklmnopqrstuvwxyz".toCharArray();
 
     public static double EnglishIOC = 0.0667;
+
+    public static String[][] Bifid = {{"a", "b", "c", "d", "e"},
+                                        {"f", "g", "h", "i", "j"},
+                                        {"k", "l", "m", "n", "o"},
+                                        {"p", "q", "r", "s", "t"},
+                                        {"u", "v", "w", "x", "y"}};
+
 
 
     public static String ApplyToLetters(String input, LambdaChar app) {
@@ -24,6 +35,10 @@ public class Tools {
     public static String Format(String text) {
         LambdaChar filter = (c) -> Character.isLetter(c) ? Character.toLowerCase(c) : null;
         return ApplyToLetters(text, filter);
+    }
+
+    public static String NumberFormat(String text) {
+        return text.replaceAll("[^1-5]", "");
     }
 
     public static int ToAlphabetIndex(char c) {
@@ -111,8 +126,27 @@ public class Tools {
         return 1;
     }
 
-    public static double[] getColumn(double[][] matrix, int column) {
+    public static double[] GetColumn(double[][] matrix, int column) {
         return IntStream.range(0, matrix.length)
                 .mapToDouble(i -> matrix[i][column]).toArray();
     }
+
+    public static int[] ReducePermutationKeyword(int[] keyword) {
+
+        Integer[] indices = new Integer[keyword.length];
+        for (int i = 0; i < keyword.length; i++) {
+            indices[i] = i;
+        }
+
+        Arrays.sort(indices, Comparator.comparingInt(i -> keyword[i]));
+
+        int[] result = new int[keyword.length];
+
+        for (int rank = 0; rank < indices.length; rank++) {
+            result[indices[rank]] = rank;
+        }
+
+        return result;
+    }
+
 }
