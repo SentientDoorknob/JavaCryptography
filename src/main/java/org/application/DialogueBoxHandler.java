@@ -346,7 +346,7 @@ public class DialogueBoxHandler {
         inputPanel.setLayout(new BoxLayout(inputPanel, BoxLayout.X_AXIS));
 
         // Input field for the keyword
-        JTextField keywordInput = new JTextField(Arrays.toString(predictedKeyword));
+        JTextField keywordInput = new JTextField(Arrays.toString(usedKeyword));
         keywordInput.setMaximumSize(new Dimension(800, 60)); // Adjusted to allow more width
         keywordInput.setAlignmentX(Component.CENTER_ALIGNMENT);
         keywordInput.setFont(bold_font);
@@ -375,6 +375,45 @@ public class DialogueBoxHandler {
         frame.add(permutationInfo);
         frame.add(scrollPane);
         frame.add(inputPanel);
+
+        frame.setVisible(true);
+    }
+
+    public void OpenBifidOutput(String substitutionText) {
+        // Open Window
+        JFrame frame = new JFrame("Bifid Output");
+        frame.setSize(800, 600);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLocationRelativeTo(null); // center on screen
+
+        frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
+
+        JLabel label = new JLabel("Bifid Cipher -> Substitution Cipher");
+        label.setAlignmentX(Component.LEFT_ALIGNMENT);
+        label.setBorder(new EmptyBorder(5, 0, 5, 0));
+
+        JTextArea substitutionOutput = new JTextArea(substitutionText);
+        substitutionOutput.setLineWrap(true);
+        substitutionOutput.setAlignmentX(Component.LEFT_ALIGNMENT);
+        substitutionOutput.setEditable(false);
+
+        JScrollPane scrollPane = new JScrollPane(substitutionOutput);
+        scrollPane.setAlignmentX(Component.LEFT_ALIGNMENT);
+
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.X_AXIS));
+
+        JButton exitButton = new JButton("Exit");
+        exitButton.addActionListener(x -> frame.dispose());
+
+        buttonPanel.add(new JLabel(""));
+        buttonPanel.add(Box.createHorizontalGlue());
+        buttonPanel.add(exitButton);
+        buttonPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
+
+        frame.add(label);
+        frame.add(scrollPane);
+        frame.add(buttonPanel);
 
         frame.setVisible(true);
     }
