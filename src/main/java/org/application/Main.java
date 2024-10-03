@@ -33,13 +33,11 @@ public class Main {
         String f_text = Tools.Format(ciphertext);
         String b_text = Tools.NumberFormat(ciphertext);
 
-        System.out.println(BifidCipher.ToSubustitutionCipher2(b_text));
-
         switch (cipher) {
             case "Vignere Cipher" -> VignereCipher.DecryptWithResultsDialogue(f_text);
             case "Affine Cipher" -> AffineCipher.DecryptWithResultsDialogue(f_text);
             case "Permutation Cipher" -> PermutationCipher.DecryptWithResultsDialogue(f_text);
-            case "Bifid Cipher" -> System.out.println("N/I");
+            case "Bifid Cipher" -> BifidCipher.ConvertWithResultsDialogue(b_text);
         }
 
     }
