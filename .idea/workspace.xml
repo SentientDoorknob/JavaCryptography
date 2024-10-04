@@ -9,12 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a228f945-501f-4b89-90c4-094fa1f5582c" name="Changes" comment="added bifid conversion">
+    <list default="true" id="a228f945-501f-4b89-90c4-094fa1f5582c" name="Changes" comment="fixed bifidcipher.java">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/application/decoders/HillCipher.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/crypography_tools/LinearAlgebra.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/JavaCryptography_jar/JavaCryptography.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/JavaCryptography_jar/JavaCryptography.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/application/DialogueBoxHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/DialogueBoxHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/application/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/application/decoders/BifidCipher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/decoders/BifidCipher.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -261,7 +259,23 @@
       <option name="project" value="LOCAL" />
       <updated>1727889804316</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="fixed  dialogue box issue">
+      <option name="closed" value="true" />
+      <created>1727982937064</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1727982937064</updated>
+    </task>
+    <task id="LOCAL-00021" summary="fixed bifidcipher.java">
+      <option name="closed" value="true" />
+      <created>1727982956785</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1727982956785</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -295,7 +309,9 @@
     <MESSAGE value="added permutaion ciphertext evaluation" />
     <MESSAGE value="added permutation decryption" />
     <MESSAGE value="added bifid conversion" />
-    <option name="LAST_COMMIT_MESSAGE" value="added bifid conversion" />
+    <MESSAGE value="fixed  dialogue box issue" />
+    <MESSAGE value="fixed bifidcipher.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed bifidcipher.java" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
