@@ -2,9 +2,8 @@ package org.crypography_tools;
 
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.List;
+import java.util.HashMap;
 import java.util.stream.Collectors;
-import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
 
 import static java.util.Collections.sort;
@@ -147,6 +146,34 @@ public class Tools {
         }
 
         return result;
+    }
+
+    public static HashMap<String, Integer> Count(String[] things) {
+        HashMap<String, Integer> dictionary = new HashMap<>();
+
+        for (String thing : things) {
+            dictionary.put(thing, dictionary.getOrDefault(thing, 0) + 1);
+        }
+
+        return dictionary;
+    }
+
+    public static String[] SplitDigraphs(String text) {
+        char[] chars = text.toCharArray();
+        int numDigraphs = (int) text.length() / 2;
+
+        String[] digraphs = new String[numDigraphs];
+
+        for (int i = 0; i < text.length(); i += 2) {
+            digraphs[i / 2] = "" + chars[i] + chars[i + 1];
+        }
+
+        return digraphs;
+    }
+
+    public static void DisplayHashmap(HashMap<String, Integer> map) {
+        map.entrySet().stream()
+                .forEach(entry -> System.out.println("Key: " + entry.getKey() + ", Value: " + entry.getValue()));
     }
 
 }
