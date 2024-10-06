@@ -9,11 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a228f945-501f-4b89-90c4-094fa1f5582c" name="Changes" comment="added digraph tools">
+    <list default="true" id="a228f945-501f-4b89-90c4-094fa1f5582c" name="Changes" comment="finished hill cipher dialoue">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/application/decoders/NihilistCipher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/application/DialogueBoxHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/DialogueBoxHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/application/decoders/HillCipher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/decoders/HillCipher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/crypography_tools/LinearAlgebra.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/crypography_tools/LinearAlgebra.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/crypography_tools/Tools.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/crypography_tools/Tools.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,8 +32,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -308,7 +307,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728226531994</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="finished hill cipher dialoue">
+      <option name="closed" value="true" />
+      <created>1728233065275</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1728233065275</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -323,7 +330,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added dialogue boxes" />
     <MESSAGE value="Added formatting and cosets" />
     <MESSAGE value="created shell for vignerecipher functions" />
     <MESSAGE value="stupid java boilerplaet" />
@@ -348,14 +354,15 @@
     <MESSAGE value="added linear algebra thingy" />
     <MESSAGE value="added hilld cipher decryption" />
     <MESSAGE value="added digraph tools" />
-    <option name="LAST_COMMIT_MESSAGE" value="added digraph tools" />
+    <MESSAGE value="finished hill cipher dialoue" />
+    <option name="LAST_COMMIT_MESSAGE" value="finished hill cipher dialoue" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/crypography_tools/Tools.java</url>
-          <line>70</line>
+          <line>82</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
