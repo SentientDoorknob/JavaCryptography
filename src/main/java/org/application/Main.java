@@ -1,9 +1,7 @@
 package org.application;
 
-import org.application.decoders.AffineCipher;
-import org.application.decoders.BifidCipher;
-import org.application.decoders.PermutationCipher;
-import org.application.decoders.VignereCipher;
+import org.application.decoders.*;
+import org.crypography_tools.LinearAlgebra;
 import org.crypography_tools.Tools;
 
 import java.util.Arrays;
@@ -17,7 +15,7 @@ public class Main {
     public static void main(String[] args) {
         boxHandler = new DialogueBoxHandler();
 
-        String[] ciphers = new String[] {"Vignere Cipher", "Affine Cipher", "Permutation Cipher", "Bifid Cipher"};
+        String[] ciphers = new String[] {"Vignere Cipher", "Affine Cipher", "Permutation Cipher", "Bifid Cipher", "Hill Cipher"};
 
         boxHandler.OpenCipherInputDialogue(ciphers);
 
@@ -37,6 +35,7 @@ public class Main {
             case "Vignere Cipher" -> VignereCipher.DecryptWithResultsDialogue(f_text);
             case "Affine Cipher" -> AffineCipher.DecryptWithResultsDialogue(f_text);
             case "Permutation Cipher" -> PermutationCipher.DecryptWithResultsDialogue(f_text);
+            case "Hill Cipher" -> HillCipher.DecryptWithResultsDialogue(f_text);
             case "Bifid Cipher" -> BifidCipher.ConvertWithResultsDialogue(b_text);
         }
 
