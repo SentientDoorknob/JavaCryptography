@@ -56,6 +56,18 @@ public class Tools {
         return cosets;
     }
 
+    public static String[] MakeCosets(String[] text, int num) {
+        String[] cosets = new String[num];
+
+        Arrays.fill(cosets, "");
+
+        for (int i = 0; i < text.length; i++) {
+            cosets[i % num] += text[i];
+        }
+
+        return cosets;
+    }
+
     public static int[] AbsoluteFrequency(String text) {
 
         int[] output = new int[26];
