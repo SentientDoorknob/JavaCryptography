@@ -8,6 +8,7 @@ public class LinearAlgebra {
 
     public static double[][] _2x2ID = new double[][] {{1, 0}, {0, 1}};
 
+
     public static double[][] MxS(double[][] matrix, double scalar) {
         return Map(matrix, x -> x * scalar);
     }
@@ -77,6 +78,17 @@ public class LinearAlgebra {
         return matrix;
     }
 
+    public static int[][] ToInt(double[][] matrix) {
+        int[][] output = new int[matrix.length][matrix[0].length];
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[0].length; j++) {
+                output[i][j] = (int) matrix[i][j];
+            }
+        }
+
+        return output;
+    }
+
     public static double _2x2Det(double[][] matrix) {
         return matrix[0][0] * matrix[1][1] - matrix[1][0] * matrix[0][1];
     }
@@ -106,5 +118,34 @@ public class LinearAlgebra {
             String row_string = Arrays.stream(row).mapToObj(String::valueOf).collect(Collectors.joining(" "));
             System.out.printf("| %s |\n", row_string);
         }
+    }
+
+    public static String MatrixToString(double[][] matrix) {
+        String output = "{";
+
+        for (double[] row : matrix) {
+            output += Arrays.toString(row).replaceAll("\\[", "{").replaceAll("]", "}");
+            output += ", ";
+        }
+
+        output = output.substring(0, output.length()-2);
+
+        output += "}";
+        return output;
+    }
+    public static String MatrixToString(double[][] matrix, boolean isInt) {
+        String output = "{";
+
+        int[][] intMatrix = ToInt(matrix);
+
+        for (int[] row : intMatrix) {
+            output += Arrays.toString(row).replaceAll("\\[", "{").replaceAll("]", "}");
+            output += ", ";
+        }
+
+        output = output.substring(0, output.length()-2);
+
+        output += "}";
+        return output;
     }
 }

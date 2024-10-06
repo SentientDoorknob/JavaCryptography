@@ -1,8 +1,11 @@
 package org.application;
 
 import org.application.decoders.AffineCipher;
+import org.application.decoders.HillCipher;
 import org.application.decoders.PermutationCipher;
 import org.application.decoders.VignereCipher;
+import org.crypography_tools.LinearAlgebra;
+import org.crypography_tools.Tools;
 
 import javax.swing.*;
 import javax.swing.border.AbstractBorder;
@@ -73,6 +76,7 @@ public class DialogueBoxHandler {
         catch (IllegalAccessException e) {
         }
     }
+
 
     public void OpenCipherInputDialogue(String[] ciphers) {
         JFrame frame = new JFrame("Cipher Selection");
@@ -265,10 +269,10 @@ public class DialogueBoxHandler {
                 "&nbsp;&nbsp;&nbsp;&nbsp;Predicted Keyword: <b>%s</b><html><br/>" +
                 "&nbsp;&nbsp;&nbsp;&nbsp;Used Keyword: <b>%s</b><html>", Arrays.toString(predictedKey), Arrays.toString(usedKey));
 
-        JLabel vignereInfo = new JLabel(text);
-        vignereInfo.setAlignmentX(Component.CENTER_ALIGNMENT);
-        vignereInfo.setFont(plain_font);
-        vignereInfo.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        JLabel affineInfo = new JLabel(text);
+        affineInfo.setAlignmentX(Component.CENTER_ALIGNMENT);
+        affineInfo.setFont(plain_font);
+        affineInfo.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
         JTextArea plaintextDisplay = new JTextArea(plaintext);
         plaintextDisplay.setLineWrap(true);
@@ -308,7 +312,7 @@ public class DialogueBoxHandler {
         keywordInput.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 
         // Add components to the frame
-        frame.add(vignereInfo);
+        frame.add(affineInfo);
         frame.add(scrollPane);
         frame.add(inputPanel);
 
@@ -360,15 +364,11 @@ public class DialogueBoxHandler {
 
         exit.addActionListener(e -> frame.dispose());
 
-        retry.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                PermutationCipher.DecryptFromResultsDialogue(ciphertext, keywordInput.getText().replaceAll("[^\\d|,]", "").split(","), predictedKeyword);
-                frame.dispose();
-            }
+        retry.addActionListener(e -> {
+            PermutationCipher.DecryptFromResultsDialogue(ciphertext, keywordInput.getText().replaceAll("[^\\d|,]", "").split(","), predictedKeyword);
+            frame.dispose();
         });
 
-        // Optional: Add an empty border for better spacing
         keywordInput.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 
         // Add components to the frame
@@ -415,6 +415,69 @@ public class DialogueBoxHandler {
         frame.add(scrollPane);
         frame.add(buttonPanel);
 
+        frame.setVisible(true);
+    }
+
+    public void OpenHillOutput(double[][] predictedMatrix, double[][] usedMatrix, String[] thhe, String plaintext, String ciphertext) {
+        JFrame frame = new JFrame("Hill Cipher Output");
+        frame.setSize(800, 600);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLocationRelativeTo(null); // Center on screen
+
+        frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
+
+        String text = String.format("<html>Permutation Cipher Analysis Results:<br/>" +
+                "&nbsp;&nbsp;&nbsp;&nbsp;Predicted Matrix: <b>%s</b><br/>" +
+                "&nbsp;&nbsp;&nbsp;&nbsp;Used Matrix: <b>%s</b><html><br/>" +
+                "&nbsp;&nbsp;&nbsp;&nbsp;[th, he]: <b>%s</b><html><br/>" +
+                "&nbsp;&nbsp;&nbsp;&nbsp;Index of Coincidence: <b>%.5f</b><html>"
+                                                                        , LinearAlgebra.MatrixToString(predictedMatrix, true)
+                                                                        , LinearAlgebra.MatrixToString(usedMatrix, true)
+                                                                        , Arrays.toString(thhe)
+                                                                        , Tools.IndexOfCoincidence(plaintext));
+
+        JLabel hillInfo = new JLabel(text);
+        hillInfo.setAlignmentX(Component.CENTER_ALIGNMENT);
+        hillInfo.setFont(plain_font);
+        hillInfo.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+        JTextArea plaintextDisplay = new JTextArea(plaintext);
+        plaintextDisplay.setLineWrap(true);
+        plaintextDisplay.setEditable(false);
+        plaintextDisplay.setAlignmentX(Component.CENTER_ALIGNMENT);
+        JScrollPane scrollPane = new JScrollPane(plaintextDisplay);
+        scrollPane.setAlignmentX(Component.CENTER_ALIGNMENT);
+        scrollPane.setPreferredSize(new Dimension(800, 100));
+
+        JPanel inputPanel = new JPanel();
+        inputPanel.setLayout(new BoxLayout(inputPanel, BoxLayout.X_AXIS));
+
+        // Input field for the keyword
+        JTextField keywordInput = new JTextField(Arrays.toString(thhe));
+        keywordInput.setMaximumSize(new Dimension(800, 60)); // Adjusted to allow more width
+        keywordInput.setAlignmentX(Component.CENTER_ALIGNMENT);
+        keywordInput.setFont(bold_font);
+
+        JButton retry = new JButton("Retry");
+        JButton exit = new JButton("Exit");
+
+        inputPanel.add(keywordInput);
+        inputPanel.add(retry);
+        inputPanel.add(exit);
+
+        exit.addActionListener(e -> frame.dispose());
+
+        retry.addActionListener(e -> {
+            HillCipher.DecryptFromResultsDialogue(ciphertext, keywordInput.getText().replaceAll("[^[a-z]|,]", "").split(","), predictedMatrix);
+            frame.dispose();
+        });
+
+        // Optional: Add an empty border for better spacing
+        keywordInput.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+
+        frame.add(hillInfo);
+        frame.add(scrollPane);
+        frame.add(inputPanel);
         frame.setVisible(true);
     }
 }

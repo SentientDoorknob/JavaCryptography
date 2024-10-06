@@ -9,15 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a228f945-501f-4b89-90c4-094fa1f5582c" name="Changes" comment="added linear algebra thingy">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/crypography_tools/LambdaDouble.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/crypography_tools/LambdaInt.java" afterDir="false" />
+    <list default="true" id="a228f945-501f-4b89-90c4-094fa1f5582c" name="Changes" comment="added digraph tools">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/application/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/application/DialogueBoxHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/DialogueBoxHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/application/decoders/HillCipher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/decoders/HillCipher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/crypography_tools/LambdaChar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/crypography_tools/LambdaChar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/crypography_tools/LinearAlgebra.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/crypography_tools/LinearAlgebra.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/crypography_tools/Tools.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/crypography_tools/Tools.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -296,7 +292,23 @@
       <option name="project" value="LOCAL" />
       <updated>1728059096023</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="added hilld cipher decryption">
+      <option name="closed" value="true" />
+      <created>1728226510008</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1728226510008</updated>
+    </task>
+    <task id="LOCAL-00025" summary="added digraph tools">
+      <option name="closed" value="true" />
+      <created>1728226531994</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1728226531994</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -334,7 +346,9 @@
     <MESSAGE value="fixed bifidcipher.java" />
     <MESSAGE value="added hill cipher" />
     <MESSAGE value="added linear algebra thingy" />
-    <option name="LAST_COMMIT_MESSAGE" value="added linear algebra thingy" />
+    <MESSAGE value="added hilld cipher decryption" />
+    <MESSAGE value="added digraph tools" />
+    <option name="LAST_COMMIT_MESSAGE" value="added digraph tools" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
