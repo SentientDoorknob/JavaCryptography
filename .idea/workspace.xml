@@ -9,10 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a228f945-501f-4b89-90c4-094fa1f5582c" name="Changes" comment="added coset overload">
+    <list default="true" id="a228f945-501f-4b89-90c4-094fa1f5582c" name="Changes" comment="added get digit possibilities">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/application/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/application/decoders/BifidCipher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/decoders/BifidCipher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/application/decoders/NihilistCipher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/decoders/NihilistCipher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/crypography_tools/Tools.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/crypography_tools/Tools.java" afterDir="false" />
     </list>
@@ -333,7 +332,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728233508128</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="added get digit possibilities">
+      <option name="closed" value="true" />
+      <created>1728415684042</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1728415684042</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -348,7 +355,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="stupid java boilerplaet" />
     <MESSAGE value="added utility functions &amp; ioc" />
     <MESSAGE value="added TryKeywordLength" />
     <MESSAGE value="finished vignerecipher decoder" />
@@ -373,7 +379,8 @@
     <MESSAGE value="finished hill cipher dialoue" />
     <MESSAGE value="added NihilistCipher.java" />
     <MESSAGE value="added coset overload" />
-    <option name="LAST_COMMIT_MESSAGE" value="added coset overload" />
+    <MESSAGE value="added get digit possibilities" />
+    <option name="LAST_COMMIT_MESSAGE" value="added get digit possibilities" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

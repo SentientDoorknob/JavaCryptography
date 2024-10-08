@@ -4,6 +4,7 @@ import org.crypography_tools.Tools;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.stream.Stream;
 
 public class NihilistCipher {
 
@@ -123,7 +124,7 @@ public class NihilistCipher {
         return filteredList.toArray(new int[0][]);
     }
 
-    public static int[][][] GetDigitPossibilities(String ciphertext) {
+    public static int[][] GetDigitPossibilities(String ciphertext) {
         boolean[][] results = GetCosetTableIter(ciphertext, 1, false);
         int[][] lastDigits = TrimResults(GetDigits(results), -1);
 
@@ -136,16 +137,79 @@ public class NihilistCipher {
         System.out.println(Arrays.deepToString(firstDigits));
         System.out.println();
 
-        return new int[][][] {firstDigits, lastDigits};
+        return Stream.concat(Arrays.stream(firstDigits), Arrays.stream(lastDigits))
+                .toArray(int[][]::new);
     }
 
-    public static int[][] GetKeywordPossibilities(int[][][] digitPossibilities) {
+    public static int[][] GetKeywordPossibilities(int[][] digitPossibilities) {
+        ArrayList<ArrayList<Integer>> last_iteration = new ArrayList<>();
+        last_iteration.add(new ArrayList<>());
+
+        for (int[] digit : digitPossibilities) {
+            ArrayList<ArrayList<Integer>> this_iteration = GenerateCombinationByDigit(digit, last_iteration);
+
+            // Move on to the next iteration (this_iteration becomes last_iteration)
+            last_iteration = new ArrayList<>(this_iteration);
+        }
+
+
+
+        return Arrays.stream(Tools.LLtoAA(last_iteration, Integer.class))
+                .map(x -> Arrays.stream(x).mapToInt(Integer::intValue).toArray()).toArray(int[][]::new);
+    }
+
+    public static int[][] DivideAndStack(int[][] keywordPossibilities) {
+        int halfLength = Math.floorDiv(keywordPossibilities[0].length, 2);
+
+        ArrayList<int[]> keywords = new ArrayList<>();
+
+        for (int[] keyword : keywordPossibilities) {
+            int[] alteredKeyword = new int[halfLength];
+            for (int i = 0; i < halfLength; i++) {
+                alteredKeyword[i] = keyword[i] * 10 + keyword[halfLength + i];
+            }
+            keywords.add(alteredKeyword);
+        }
+
+        return keywords.toArray(int[][]::new);
+    }
+
+    private static ArrayList<ArrayList<Integer>> GenerateCombinationByDigit(int[] digit, ArrayList<ArrayList<Integer>> last_iteration) {
+        ArrayList<ArrayList<Integer>> this_iteration = new ArrayList<>();
+
+        // Iterate over each possibility in the current row
+        for (int possibility : digit) {
+            // For each possibility, create altered combinations from the last iteration
+            for (ArrayList<Integer> combination : last_iteration) {
+                // Create a new combination by copying the current combination
+                ArrayList<Integer> newCombination = new ArrayList<>(combination);
+
+                // Add the current possibility to the new combination
+                newCombination.add(possibility);
+
+                // Add the new combination to this iteration
+                this_iteration.add(newCombination);
+            }
+        }
+        return this_iteration;
+    }
+
+
+    public static String DecryptWithKeyword(int[] keyword) {
 
     }
+
 
     public static void ConvertWithResultsDialogue(String ciphertext) {
-        int[][][] DigitPossibilities = GetDigitPossibilities(ciphertext);
+        int[][] digitPossibilities = GetDigitPossibilities(ciphertext);
 
+        System.out.println(Arrays.deepToString(digitPossibilities));
+
+        int[][] keywordPossibilities = GetKeywordPossibilities(digitPossibilities);
+
+        int[][] keywords = DivideAndStack(keywordPossibilities);
+
+        System.out.println(Arrays.deepToString(keywords));
 
     }
 }

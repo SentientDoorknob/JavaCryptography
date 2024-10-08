@@ -3,6 +3,8 @@ package org.application;
 import org.application.decoders.*;
 import org.crypography_tools.Tools;
 
+import java.util.Arrays;
+
 public class Main {
 
     public static DialogueBoxHandler boxHandler;
@@ -15,6 +17,10 @@ public class Main {
         String[] ciphers = new String[] {"Vignere Cipher", "Affine Cipher", "Permutation Cipher", "Bifid Cipher", "Hill Cipher", "Nihilist Cipher"};
 
         boxHandler.OpenCipherInputDialogue(ciphers);
+
+        int[][] c = new int[][] {{1}, {2}, {3,4}, {5,6}};
+
+        System.out.println(Arrays.deepToString(NihilistCipher.GetKeywordPossibilities(c)));
 
     }
 

@@ -233,4 +233,14 @@ public class Tools {
         return maxSpan;
     }
 
+    public static <T> T[][] LLtoAA(ArrayList<ArrayList<T>> l, Class<T> clazz) {
+        T[][] array = (T[][]) java.lang.reflect.Array.newInstance(clazz, l.size(), 0);
+
+        for (int i = 0; i < l.size(); i++) {
+            array[i] = l.get(i).toArray((T[]) java.lang.reflect.Array.newInstance(clazz, l.get(i).size()));
+        }
+
+        return array;
+    }
+
 }
