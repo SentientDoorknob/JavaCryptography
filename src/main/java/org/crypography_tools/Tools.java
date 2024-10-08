@@ -1,5 +1,6 @@
 package org.crypography_tools;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -14,7 +15,7 @@ public class Tools {
 
     public static double EnglishIOC = 0.0667;
 
-    public static String[][] Bifid = {{"a", "b", "c", "d", "e"},
+    public static String[][] PolybiusDefault = {{"a", "b", "c", "d", "e"},
                                         {"f", "g", "h", "i", "j"},
                                         {"k", "l", "m", "n", "o"},
                                         {"p", "q", "r", "s", "t"},
@@ -36,8 +37,12 @@ public class Tools {
         return ApplyToLetters(text, filter);
     }
 
+    public static String DigitFormat(String text) {
+        return text.replaceAll("[^0-9]", "");
+    }
+
     public static String NumberFormat(String text) {
-        return text.replaceAll("[^1-5]", "");
+        return text.replaceAll("\n", " ").replaceAll("[^0-9 ]", "");
     }
 
     public static int ToAlphabetIndex(char c) {
@@ -56,13 +61,12 @@ public class Tools {
         return cosets;
     }
 
-    public static String[] MakeCosets(String[] text, int num) {
-        String[] cosets = new String[num];
+    public static int[][] MakeIntArrayCosets(int[] text, int num) {
+        int[][] cosets = new int[num][text.length / num - num];
 
-        Arrays.fill(cosets, "");
-
-        for (int i = 0; i < text.length; i++) {
-            cosets[i % num] += text[i];
+        for (int i = 0; i < text.length - num; i++) {
+            try {cosets[i % num][i / num] = text[i]; }
+            catch (IndexOutOfBoundsException ignored) {}
         }
 
         return cosets;
@@ -186,6 +190,47 @@ public class Tools {
     public static void DisplayHashmap(HashMap<String, Integer> map) {
         map.entrySet().stream()
                 .forEach(entry -> System.out.println("Key: " + entry.getKey() + ", Value: " + entry.getValue()));
+    }
+
+    public static ArrayList<Integer> GetTrues(boolean[] array) {
+        ArrayList<Integer> trues = new ArrayList<>();
+
+        for (int i = 0; i < array.length; i++) {
+            if (array[i]) {
+                trues.add(i);
+            }
+        }
+
+        return trues;
+    }
+
+    public static int[] GetMaximumSpan(boolean[] bools) {
+        int[] maxSpan = new int[2];
+        // span, start
+
+        int[] tempSpan = new int[2];
+        for (int i = 0; i < bools.length; i++) {
+            boolean b = bools[i];
+
+            if (!b) {
+                tempSpan = new int[] {0, 0};
+                continue;
+            }
+
+            if (Arrays.equals(tempSpan, new int[]{0, 0})) {
+                tempSpan[0] = 1;
+                tempSpan[1] = i;
+                continue;
+            }
+
+            tempSpan[0]++;
+
+            if (tempSpan[0] > maxSpan[0]) {
+                maxSpan = tempSpan.clone();
+            }
+        }
+
+        return maxSpan;
     }
 
 }

@@ -11,7 +11,7 @@ public class BifidCipher {
         String substitution = "";
 
         for (int i = 0; i < ciphertext.length(); i += 2) {
-            substitution += Tools.Bifid[ints[i]][ints[i+1]];
+            substitution += Tools.PolybiusDefault[ints[i]][ints[i+1]];
         }
 
         System.out.println(Tools.IndexOfCoincidence(substitution));

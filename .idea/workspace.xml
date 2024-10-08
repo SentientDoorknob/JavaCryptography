@@ -9,9 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a228f945-501f-4b89-90c4-094fa1f5582c" name="Changes" comment="finished hill cipher dialoue">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/application/decoders/NihilistCipher.java" afterDir="false" />
+    <list default="true" id="a228f945-501f-4b89-90c4-094fa1f5582c" name="Changes" comment="added coset overload">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/application/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/application/decoders/BifidCipher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/decoders/BifidCipher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/application/decoders/NihilistCipher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/decoders/NihilistCipher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/crypography_tools/Tools.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/crypography_tools/Tools.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -315,7 +317,23 @@
       <option name="project" value="LOCAL" />
       <updated>1728233065275</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="added NihilistCipher.java">
+      <option name="closed" value="true" />
+      <created>1728233497400</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1728233497400</updated>
+    </task>
+    <task id="LOCAL-00028" summary="added coset overload">
+      <option name="closed" value="true" />
+      <created>1728233508128</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1728233508128</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -330,8 +348,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added formatting and cosets" />
-    <MESSAGE value="created shell for vignerecipher functions" />
     <MESSAGE value="stupid java boilerplaet" />
     <MESSAGE value="added utility functions &amp; ioc" />
     <MESSAGE value="added TryKeywordLength" />
@@ -355,14 +371,16 @@
     <MESSAGE value="added hilld cipher decryption" />
     <MESSAGE value="added digraph tools" />
     <MESSAGE value="finished hill cipher dialoue" />
-    <option name="LAST_COMMIT_MESSAGE" value="finished hill cipher dialoue" />
+    <MESSAGE value="added NihilistCipher.java" />
+    <MESSAGE value="added coset overload" />
+    <option name="LAST_COMMIT_MESSAGE" value="added coset overload" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/crypography_tools/Tools.java</url>
-          <line>82</line>
+          <line>86</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
