@@ -1,9 +1,6 @@
 package org.application;
 
-import org.application.decoders.AffineCipher;
-import org.application.decoders.HillCipher;
-import org.application.decoders.PermutationCipher;
-import org.application.decoders.VignereCipher;
+import org.application.decoders.*;
 import org.crypography_tools.LinearAlgebra;
 import org.crypography_tools.Tools;
 
@@ -478,6 +475,69 @@ public class DialogueBoxHandler {
         frame.add(hillInfo);
         frame.add(scrollPane);
         frame.add(inputPanel);
+        frame.setVisible(true);
+    }
+
+    public void OpenNihilistOutput(int[][] predictedKeywords, int[] usedKeyword, String substitutionText, String ciphertext) {
+        // Open Window
+        JFrame frame = new JFrame("Nihilist Cipher Output");
+        frame.setSize(800, 600);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLocationRelativeTo(null); // Center on screen
+
+        frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
+
+        String text = String.format("<html>Nihilist Cipher Analysis Results:<br/>" +
+                "&nbsp;&nbsp;&nbsp;&nbsp;Keyword Length: <b>%d</b><br/>" +
+                "&nbsp;&nbsp;&nbsp;&nbsp;Predicted Keywords: <br/>", usedKeyword.length);
+
+        for (int[] k : predictedKeywords) {
+            text = text.concat(String.format("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>%s</b><br/>", Arrays.toString(k)));
+        }
+
+        JLabel permutationInfo = new JLabel(text);
+        permutationInfo.setAlignmentX(Component.CENTER_ALIGNMENT);
+        permutationInfo.setFont(plain_font);
+        permutationInfo.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+        JTextArea plaintextDisplay = new JTextArea(substitutionText);
+        plaintextDisplay.setLineWrap(true);
+        plaintextDisplay.setEditable(false);
+        plaintextDisplay.setAlignmentX(Component.CENTER_ALIGNMENT);
+        JScrollPane scrollPane = new JScrollPane(plaintextDisplay);
+        scrollPane.setAlignmentX(Component.CENTER_ALIGNMENT);
+        scrollPane.setPreferredSize(new Dimension(800, 100));
+
+        JPanel inputPanel = new JPanel();
+        inputPanel.setLayout(new BoxLayout(inputPanel, BoxLayout.X_AXIS));
+
+        // Input field for the keyword
+        JTextField keywordInput = new JTextField(Arrays.toString(usedKeyword));
+        keywordInput.setMaximumSize(new Dimension(800, 60)); // Adjusted to allow more width
+        keywordInput.setAlignmentX(Component.CENTER_ALIGNMENT);
+        keywordInput.setFont(bold_font);
+
+        JButton retry = new JButton("Retry");
+        JButton exit = new JButton("Exit");
+
+        inputPanel.add(keywordInput);
+        inputPanel.add(retry);
+        inputPanel.add(exit);
+
+        exit.addActionListener(e -> frame.dispose());
+
+        retry.addActionListener(e -> {
+            NihilistCipher.ConvertFromResultsDialogue(ciphertext, predictedKeywords, keywordInput.getText().replaceAll("[^\\d|,]", "").split(","));
+            frame.dispose();
+        });
+
+        keywordInput.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+
+        // Add components to the frame
+        frame.add(permutationInfo);
+        frame.add(scrollPane);
+        frame.add(inputPanel);
+
         frame.setVisible(true);
     }
 }

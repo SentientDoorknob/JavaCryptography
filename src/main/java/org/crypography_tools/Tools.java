@@ -134,6 +134,26 @@ public class Tools {
         return output.toString();
     }
 
+    public static int[] InterleaveIntArray(int[][] array) {
+        ArrayList<Integer> list = new ArrayList<>();
+
+        int i = 0;
+        boolean cont = true;
+
+        while (cont) {
+            cont = false; // Assume this will be the last iteration unless proven otherwise
+            for (int[] set : array) {
+                if (i < set.length) {
+                    list.add(set[i]);
+                    cont = true;
+                }
+            }
+            i++;
+        }
+
+        return list.stream().mapToInt(Integer::intValue).toArray();
+    }
+
     public static int ModularInverse(int dividend, int divisor) {
         for (int X = 1; X < divisor; X++)
             if (((dividend % divisor) * (X % divisor)) % divisor == 1)

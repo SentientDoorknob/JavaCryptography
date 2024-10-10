@@ -1,10 +1,16 @@
 package org.application.decoders;
 
+import org.application.DialogueBoxHandler;
+import org.application.Main;
 import org.crypography_tools.Tools;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import static java.lang.Math.abs;
+import static java.lang.Math.max;
 
 public class NihilistCipher {
 
@@ -194,24 +200,66 @@ public class NihilistCipher {
         return this_iteration;
     }
 
-
-    public static String DecryptWithKeyword(int[] keyword) {
-
-    }
-
-
-    public static void ConvertWithResultsDialogue(String ciphertext) {
+    public static int[][] GetKeywords(String ciphertext) {
         int[][] digitPossibilities = GetDigitPossibilities(ciphertext);
 
         System.out.println(Arrays.deepToString(digitPossibilities));
 
         int[][] keywordPossibilities = GetKeywordPossibilities(digitPossibilities);
 
-        int[][] keywords = DivideAndStack(keywordPossibilities);
-
-        System.out.println(Arrays.deepToString(keywords));
-
+        return DivideAndStack(keywordPossibilities);
     }
+
+    public static String DecryptWithKeyword(String ciphertext, int[] keyword) {
+        int keywordLength = keyword.length;
+        int[] ciphertextArray = Arrays.stream(ciphertext.split(" ")).mapToInt(Integer::parseInt).toArray();
+        int[][] cosets = Tools.MakeIntArrayCosets(ciphertextArray, keywordLength);
+
+        for (int i = 0; i < keywordLength; i++) {
+            int keyLetter = keyword[i];
+            cosets[i] = Arrays.stream(cosets[i]).map(x -> x - keyLetter).toArray();
+        }
+
+        int[] decryptedInts = Tools.InterleaveIntArray(cosets);
+        ArrayList<String> chars = new ArrayList<>();
+
+        for (int i : decryptedInts) {
+            chars.add(Tools.PolybiusDefault[(i - i % 10) / 10 - 1][i % 10 - 1]);
+        }
+
+        return String.join("", chars);
+    }
+
+    public static void ConvertWithResultsDialogue(String ciphertext) {
+        int[][] keywords = GetKeywords(ciphertext);
+
+        String maxPlaintext = "";
+        double minIOCDifference = 100D;
+
+        int[] usedKeyword = new int[] {};
+
+        for (int[] keyword : keywords) {
+            String plaintext = DecryptWithKeyword(ciphertext, keyword);
+            double indexOfCoincidence = Tools.IndexOfCoincidence(plaintext);
+
+            if (abs(indexOfCoincidence - Tools.EnglishIOC) < minIOCDifference) {
+                minIOCDifference = indexOfCoincidence;
+                maxPlaintext = plaintext;
+                usedKeyword = keyword;
+            }
+        }
+
+        Main.boxHandler.OpenNihilistOutput(keywords, usedKeyword, maxPlaintext, ciphertext);
+    }
+
+    public static void ConvertFromResultsDialogue(String ciphertext, int[][] predictedKeywords, String[] usedKeywordString) {
+        int[] usedKeyword = Arrays.stream(usedKeywordString).mapToInt(Integer::parseInt).toArray();
+        String plaintext = DecryptWithKeyword(ciphertext, usedKeyword);
+
+        Main.boxHandler.OpenNihilistOutput(predictedKeywords, usedKeyword, plaintext, ciphertext);
+    }
+
+
 }
 
 //  55 14 23 45 51 55 44
