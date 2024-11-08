@@ -1,6 +1,7 @@
 package org.application;
 
 import org.application.decoders.*;
+import org.application.results.cipher.AffineResult;
 import org.crypography_tools.LinearAlgebra;
 import org.crypography_tools.Tools;
 
@@ -17,24 +18,6 @@ import java.util.Arrays;
 
 import static java.lang.String.format;
 
-class RoundedBorder extends AbstractBorder {
-    private final int radius;
-
-    public RoundedBorder(int radius) {
-        this.radius = radius;
-    }
-
-    @Override
-    public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
-        Graphics2D g2 = (Graphics2D) g.create();
-        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        g2.setColor(Color.GRAY);
-        g2.setStroke(new BasicStroke(2));
-        g2.drawRoundRect(x, y, width - 1, height - 1, radius, radius);
-        g2.dispose();
-    }
-}
-
 public class DialogueBoxHandler {
 
 
@@ -46,6 +29,12 @@ public class DialogueBoxHandler {
     public String getCipherText() {
         return ciphertext;
     }
+
+    public ActionListener returnListener = e -> {
+        Main.main(null);
+        JFrame parentFrame = (JFrame) SwingUtilities.getWindowAncestor((JButton) e.getSource());
+        parentFrame.dispose();
+    };
 
     public void setCipherText(String text) throws UnsupportedLookAndFeelException, ClassNotFoundException, InstantiationException, IllegalAccessException {
         ciphertext = text;
@@ -253,7 +242,7 @@ public class DialogueBoxHandler {
 
     }
 
-    public void OpenAffineOutput(int[] predictedKey, int[] usedKey, String plaintext, String ciphertext) {
+    public void OpenAffineOutput(AffineResult result) {
         // Open Window
         JFrame frame = new JFrame("Affine Cipher");
         frame.setSize(800, 600);
@@ -262,16 +251,21 @@ public class DialogueBoxHandler {
 
         frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
 
+        System.out.println("Here");
+        System.out.println(Arrays.toString(result.predictedKeyword));
+
         String text = String.format("<html>Permutation Cipher Analysis Results:<br/>" +
-                "&nbsp;&nbsp;&nbsp;&nbsp;Predicted Keyword: <b>%s</b><html><br/>" +
-                "&nbsp;&nbsp;&nbsp;&nbsp;Used Keyword: <b>%s</b><html>", Arrays.toString(predictedKey), Arrays.toString(usedKey));
+                "&nbsp;&nbsp;&nbsp;&nbsp; Predicted Keyword: <b>%s</b><br/>" +
+                "&nbsp;&nbsp;&nbsp;&nbsp; Used Keyword: <b>%s</b><br/>" +
+                "&nbsp;&nbsp;&nbsp;&nbsp; Used ET: <b>%s</b><html>",
+                Arrays.toString(result.predictedKeyword), Arrays.toString(result.usedKeyword), Arrays.toString(result.ET));
 
         JLabel affineInfo = new JLabel(text);
         affineInfo.setAlignmentX(Component.CENTER_ALIGNMENT);
         affineInfo.setFont(plain_font);
         affineInfo.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-        JTextArea plaintextDisplay = new JTextArea(plaintext);
+        JTextArea plaintextDisplay = new JTextArea(result.plaintext);
         plaintextDisplay.setLineWrap(true);
         plaintextDisplay.setEditable(false);
         plaintextDisplay.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -288,21 +282,33 @@ public class DialogueBoxHandler {
         keywordInput.setAlignmentX(Component.CENTER_ALIGNMENT);
         keywordInput.setFont(bold_font);
 
+        JButton swap = new JButton("Swap");
         JButton retry = new JButton("Retry");
         JButton exit = new JButton("Exit");
 
         inputPanel.add(keywordInput);
+        inputPanel.add(swap);
         inputPanel.add(retry);
         inputPanel.add(exit);
 
-        exit.addActionListener(e -> frame.dispose());
+        exit.addActionListener(returnListener);
 
-        retry.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                AffineCipher.DecryptFromDialogue(ciphertext, keywordInput.getText().trim().split(",[ ]*"), predictedKey);
-                frame.dispose();
-            }
+        retry.addActionListener(e -> {
+            String[] inputValue = keywordInput.getText().trim().split(",[ ]*");
+
+            result.ET = Tools.StringToIntArray(inputValue);
+            result.ReAnalyse();
+
+            frame.dispose();
+        });
+
+        swap.addActionListener(e -> {
+            int temp = result.ET[0];
+            result.ET[0] = result.ET[1];
+            result.ET[1] = temp;
+
+            result.ReAnalyse();
+            frame.dispose();
         });
 
         // Optional: Add an empty border for better spacing
