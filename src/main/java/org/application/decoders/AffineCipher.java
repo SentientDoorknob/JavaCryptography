@@ -26,8 +26,8 @@ public class AffineCipher {
 
         Arrays.sort(sortedFrequencies);
 
-        int e_index = Arrays.stream(absoluteFrequencies).boxed().collect(Collectors.toList()).indexOf(sortedFrequencies[25]);
-        int t_index = Arrays.stream(absoluteFrequencies).boxed().collect(Collectors.toList()).indexOf(sortedFrequencies[24]);
+        int e_index = Arrays.stream(absoluteFrequencies).boxed().toList().indexOf(sortedFrequencies[25]);
+        int t_index = Arrays.stream(absoluteFrequencies).boxed().toList().indexOf(sortedFrequencies[24]);
 
         return new int[] {e_index, t_index};
     }
