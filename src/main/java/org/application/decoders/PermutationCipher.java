@@ -1,15 +1,29 @@
 package org.application.decoders;
 
 import org.application.Main;
+import org.application.results.cipher.PermutationResult;
 import org.crypography_tools.Digram;
 import org.crypography_tools.Tools;
 
 import java.util.Arrays;
-import java.util.OptionalDouble;
 import java.util.stream.Collectors;
 
+/*
+
+    Method Source: https://homepages.math.uic.edu/~leon/mcs425-s08/handouts/breaking_tranposition_cipher.pdf
+
+    PAIRS -> How likely 2 Columns are to be next to each other.
+    KEY -> Array of integers, ascending order.
+
+ */
+
 public class PermutationCipher {
-    public static double evaluateColumnPair(String c1, String c2) {
+    public static final int MAX_KEYWORD_LENGTH = 30;
+
+    // CIPHERTEXT -> PAIRS -> KEY -> PLAINTEXT
+
+    // UTIL -> EvaluateCiphertext
+    public static double EvaluateColumnPair(String c1, String c2) {
         if (c1.equals(c2)) {
             return -10;
         }
@@ -27,9 +41,10 @@ public class PermutationCipher {
         return (float) sum / columnSize;
     }
 
-    public static double[][] evaluateCiphertext(String ciphertext, int length) {
+    // Returns PAIRS. Recursively follows method with incrementing keyword lengths.
+    public static double[][] EvaluateCiphertext(String ciphertext, int length) {
 
-        if ( length > 30) {
+        if ( length > MAX_KEYWORD_LENGTH) {
             return null;
         }
 
@@ -45,7 +60,7 @@ public class PermutationCipher {
             for (int j = 0; j < length; j++) {
                 String c2 = cosets[j];
 
-                double columnEvaluation = evaluateColumnPair(c1, c2);
+                double columnEvaluation = EvaluateColumnPair(c1, c2);
                 results[i][j] = columnEvaluation;
 
                 if (columnEvaluation > 0) {
@@ -58,20 +73,16 @@ public class PermutationCipher {
             return results;
         }
 
-        return evaluateCiphertext(ciphertext, length + 1);
+        return EvaluateCiphertext(ciphertext, length + 1);
     }
 
-    public static int[] getKeyword(String ciphertext) {
-        double[][] results = evaluateCiphertext(ciphertext, 3);
-        return AnalyseResults(results);
-    }
-
-    public static int[] AnalyseResults(double[][] results) {
+    // Returns KEY. See method - follows path of adjacent columns.
+    public static int[] GetKeyword(double[][] pairs) {
         int emptyColumn = 1;
-        int keywordLength = results.length;
+        int keywordLength = pairs.length;
 
         for (int i = 0; i < keywordLength; i++) {
-            boolean isNegative = Arrays.stream(Tools.GetColumn(results, i)).allMatch(x -> x < 0);
+            boolean isNegative = Arrays.stream(Tools.GetColumn(pairs, i)).allMatch(x -> x < 0);
             if (isNegative) {emptyColumn = i;}
         }
 
@@ -80,13 +91,14 @@ public class PermutationCipher {
         for (int i = 0; i < keywordLength; i++) {
             keyword[i] = emptyColumn;
 
-            double maxValue = Arrays.stream(results[emptyColumn]).max().orElseThrow();
-            emptyColumn = Arrays.stream(results[emptyColumn]).boxed().collect(Collectors.toList()).indexOf(maxValue);
+            double maxValue = Arrays.stream(pairs[emptyColumn]).max().orElseThrow();
+            emptyColumn = Arrays.stream(pairs[emptyColumn]).boxed().collect(Collectors.toList()).indexOf(maxValue);
         }
 
         return keyword;
     }
 
+    // Returns PLAINTEXT. Rearranges columns.
     public static String DecryptWithKeyword(String ciphertext, int[] keyword) {
         int keywordLength = keyword.length;
         String[] cosets = Tools.MakeCosets(ciphertext, keywordLength);
@@ -100,20 +112,23 @@ public class PermutationCipher {
         return Tools.Interleave(permutedCosets);
     }
 
+
     public static void DecryptWithResultsDialogue(String ciphertext) {
-        int[] keyword = getKeyword(ciphertext);
+        double[][] pairs = EvaluateCiphertext(ciphertext, 4);
+        assert pairs != null;
+        int[] keyword = GetKeyword(pairs);
         String plaintext = DecryptWithKeyword(ciphertext, keyword);
 
-        Main.boxHandler.OpenPermutationOutput(keyword, keyword, plaintext, ciphertext);
+        PermutationResult result = new PermutationResult(ciphertext, plaintext, keyword, PermutationCipher::DecryptFromResultsDialogue);
+
+        Main.boxHandler.OpenPermutationOutput(result);
     }
 
-    public static void DecryptFromResultsDialogue(String ciphertext, String[] keyword, int[] predictedKeyword) {
-        System.out.println(Arrays.toString(keyword));
-        int[] reducedKeyword = Tools.ReducePermutationKeyword(Arrays.stream(keyword).mapToInt(x -> Integer.parseInt(x)).toArray());
-        System.out.println(Arrays.toString(reducedKeyword));
-        String plaintext = DecryptWithKeyword(ciphertext, reducedKeyword);
+    public static void DecryptFromResultsDialogue(PermutationResult result) {
+        result.usedKeyword = Tools.ReducePermutationKeyword(Arrays.stream(result.usedKeyword).toArray());
+        result.plaintext = DecryptWithKeyword(result.ciphertext, result.usedKeyword);
 
-        Main.boxHandler.OpenPermutationOutput(predictedKeyword, reducedKeyword, plaintext, ciphertext);
+        Main.boxHandler.OpenPermutationOutput(result);
     }
 
 }

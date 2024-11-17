@@ -2,6 +2,7 @@ package org.application;
 
 import org.application.decoders.*;
 import org.application.results.cipher.AffineResult;
+import org.application.results.cipher.PermutationResult;
 import org.application.results.cipher.VignereResult;
 import org.crypography_tools.LinearAlgebra;
 import org.crypography_tools.Tools;
@@ -322,7 +323,7 @@ public class DialogueBoxHandler {
         frame.setVisible(true);
     }
 
-    public void OpenPermutationOutput(int[] predictedKeyword, int[] usedKeyword, String plaintext, String ciphertext) {
+    public void OpenPermutationOutput(PermutationResult result) {
         // Open Window
         JFrame frame = new JFrame("Permutation Cipher Output");
         frame.setSize(800, 600);
@@ -334,14 +335,14 @@ public class DialogueBoxHandler {
         String text = String.format("<html>Permutation Cipher Analysis Results:<br/>" +
                 "&nbsp;&nbsp;&nbsp;&nbsp;Keyword Length: <b>%d</b><br/>" +
                 "&nbsp;&nbsp;&nbsp;&nbsp;Predicted Keyword: <b>%s</b><html><br/>" +
-                "&nbsp;&nbsp;&nbsp;&nbsp;Used Keyword: <b>%s</b><html>", predictedKeyword.length, Arrays.toString(predictedKeyword), Arrays.toString(usedKeyword));
+                "&nbsp;&nbsp;&nbsp;&nbsp;Used Keyword: <b>%s</b><html>", result.usedKeyword.length, Arrays.toString(result.predictedKeyword), Arrays.toString(result.usedKeyword));
 
         JLabel permutationInfo = new JLabel(text);
         permutationInfo.setAlignmentX(Component.CENTER_ALIGNMENT);
         permutationInfo.setFont(plain_font);
         permutationInfo.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-        JTextArea plaintextDisplay = new JTextArea(plaintext);
+        JTextArea plaintextDisplay = new JTextArea(result.plaintext);
         plaintextDisplay.setLineWrap(true);
         plaintextDisplay.setEditable(false);
         plaintextDisplay.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -353,7 +354,7 @@ public class DialogueBoxHandler {
         inputPanel.setLayout(new BoxLayout(inputPanel, BoxLayout.X_AXIS));
 
         // Input field for the keyword
-        JTextField keywordInput = new JTextField(Arrays.toString(usedKeyword));
+        JTextField keywordInput = new JTextField(Arrays.toString(result.usedKeyword));
         keywordInput.setMaximumSize(new Dimension(800, 60)); // Adjusted to allow more width
         keywordInput.setAlignmentX(Component.CENTER_ALIGNMENT);
         keywordInput.setFont(bold_font);
@@ -365,10 +366,15 @@ public class DialogueBoxHandler {
         inputPanel.add(retry);
         inputPanel.add(exit);
 
-        exit.addActionListener(e -> frame.dispose());
+        exit.addActionListener(returnListener);
 
         retry.addActionListener(e -> {
-            PermutationCipher.DecryptFromResultsDialogue(ciphertext, keywordInput.getText().replaceAll("[^\\d|,]", "").split(","), predictedKeyword);
+            result.usedKeyword = Arrays.stream(keywordInput.getText()
+                            .replaceAll("[^\\d|,]", "")
+                            .split(","))
+                            .mapToInt(Integer::parseInt).toArray();
+
+            PermutationCipher.DecryptFromResultsDialogue(result);
             frame.dispose();
         });
 
