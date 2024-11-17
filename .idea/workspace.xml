@@ -9,11 +9,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a228f945-501f-4b89-90c4-094fa1f5582c" name="Changes" comment="added keyword possibilities + stacking">
+    <list default="true" id="a228f945-501f-4b89-90c4-094fa1f5582c" name="Changes" comment="refactored VignereCipher">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/application/decoders/RailfenceCipher.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/application/results/cipher/PermutationResult.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/application/DialogueBoxHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/DialogueBoxHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/application/decoders/NihilistCipher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/decoders/NihilistCipher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/crypography_tools/Tools.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/crypography_tools/Tools.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/application/decoders/AffineCipher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/decoders/AffineCipher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/application/decoders/PermutationCipher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/decoders/PermutationCipher.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -348,7 +350,55 @@
       <option name="project" value="LOCAL" />
       <updated>1728419205489</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="finished nihilistcipher dialogue">
+      <option name="closed" value="true" />
+      <created>1728582648008</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1728582648008</updated>
+    </task>
+    <task id="LOCAL-00032" summary="compiled">
+      <option name="closed" value="true" />
+      <created>1728582678495</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1728582678495</updated>
+    </task>
+    <task id="LOCAL-00033" summary="refactored affine cipher">
+      <option name="closed" value="true" />
+      <created>1731088993597</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1731088993597</updated>
+    </task>
+    <task id="LOCAL-00034" summary="added cipherresult">
+      <option name="closed" value="true" />
+      <created>1731089007656</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1731089007656</updated>
+    </task>
+    <task id="LOCAL-00035" summary="given in to intellij warnings">
+      <option name="closed" value="true" />
+      <created>1731089105639</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1731089105639</updated>
+    </task>
+    <task id="LOCAL-00036" summary="refactored VignereCipher">
+      <option name="closed" value="true" />
+      <created>1731837133296</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1731837133296</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -363,12 +413,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added TryKeywordLength" />
-    <MESSAGE value="finished vignerecipher decoder" />
-    <MESSAGE value="remove unnecessary debug messages" />
-    <MESSAGE value="put dialogue font sttings in constructor" />
-    <MESSAGE value="added vignere display" />
-    <MESSAGE value="inverted decryption direction in VGC" />
     <MESSAGE value="finished vignere interface" />
     <MESSAGE value="added affine cipher" />
     <MESSAGE value="whoopsies finished that" />
@@ -388,14 +432,20 @@
     <MESSAGE value="added coset overload" />
     <MESSAGE value="added get digit possibilities" />
     <MESSAGE value="added keyword possibilities + stacking" />
-    <option name="LAST_COMMIT_MESSAGE" value="added keyword possibilities + stacking" />
+    <MESSAGE value="finished nihilistcipher dialogue" />
+    <MESSAGE value="compiled" />
+    <MESSAGE value="refactored affine cipher" />
+    <MESSAGE value="added cipherresult" />
+    <MESSAGE value="given in to intellij warnings" />
+    <MESSAGE value="refactored VignereCipher" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactored VignereCipher" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/crypography_tools/Tools.java</url>
-          <line>86</line>
+          <line>90</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
