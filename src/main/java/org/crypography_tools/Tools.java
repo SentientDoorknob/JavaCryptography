@@ -15,7 +15,11 @@ public class Tools {
 
     public static double EnglishIOC = 0.0667;
 
-    public static String[][] PolybiusDefault = {{"a", "b", "c", "d", "e"},
+    public static final double[] EnglishLetterFrequencies = {0.12, 0.091, 0.0812, 0.0768, 0.0731, 0.0695, 0.0628, 0.0602, 0.0592, 0.0432,
+            0.0398, 0.0288, 0.0271, 0.0261, 0.023, 0.0211, 0.0209, 0.0203, 0.0182, 0.0149,
+            0.0111, 0.0069, 0.0017, 0.0011, 0.001, 0.0007};
+
+    public static final String[][] PolybiusDefault = {{"a", "b", "c", "d", "e"},
                                         {"f", "g", "h", "i", "j"},
                                         {"k", "l", "m", "n", "o"},
                                         {"p", "q", "r", "s", "t"},
@@ -269,5 +273,16 @@ public class Tools {
             result[i] = Integer.parseInt(s[i]);
         }
         return result;
+    }
+
+    public static double XSquared(double[] observed, double[] expected) {
+        int length = Math.min(observed.length, expected.length);
+
+        double sum = 0;
+        for (int i = 0; i < length; i++) {
+            sum += (observed[i] - expected[i]) * (observed[i] - expected[i]) / 2;
+        }
+
+        return sum;
     }
 }

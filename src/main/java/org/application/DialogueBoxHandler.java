@@ -2,6 +2,7 @@ package org.application;
 
 import org.application.decoders.*;
 import org.application.results.cipher.AffineResult;
+import org.application.results.cipher.VignereResult;
 import org.crypography_tools.LinearAlgebra;
 import org.crypography_tools.Tools;
 
@@ -177,7 +178,8 @@ public class DialogueBoxHandler {
         frame.setVisible(true);
     }
 
-    public void OpenVignereOutput(String predictedKeyword, String usedKeyword, String plaintext, String ciphertext) {
+
+    public void OpenVignereOutput(VignereResult result) {
         // Open Window
         JFrame frame = new JFrame("Vignere Cipher Output");
         frame.setSize(800, 600);
@@ -186,17 +188,17 @@ public class DialogueBoxHandler {
 
         frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
 
-        String text = String.format("<html>Permutation Cipher Analysis Results:<br/>" +
+        String text = String.format("<html>Vignere Cipher Analysis Results:<br/>" +
                 "&nbsp;&nbsp;&nbsp;&nbsp;Keyword Length: <b>%d</b><br/>" +
                 "&nbsp;&nbsp;&nbsp;&nbsp;Predicted Keyword: <b>%s</b><html><br/>" +
-                "&nbsp;&nbsp;&nbsp;&nbsp;Used Keyword: <b>%s</b><html>", usedKeyword.length(), predictedKeyword, usedKeyword);
+                "&nbsp;&nbsp;&nbsp;&nbsp;Used Keyword: <b>%s</b><html>", result.usedKeyword.length(), result.predictedKeyword, result.usedKeyword);
 
         JLabel vignereInfo = new JLabel(text);
         vignereInfo.setAlignmentX(Component.CENTER_ALIGNMENT);
         vignereInfo.setFont(plain_font);
         vignereInfo.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-        JTextArea plaintextDisplay = new JTextArea(plaintext);
+        JTextArea plaintextDisplay = new JTextArea(result.plaintext);
         plaintextDisplay.setLineWrap(true);
         plaintextDisplay.setEditable(false);
         plaintextDisplay.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -208,7 +210,7 @@ public class DialogueBoxHandler {
         inputPanel.setLayout(new BoxLayout(inputPanel, BoxLayout.X_AXIS));
 
         // Input field for the keyword
-        JTextField keywordInput = new JTextField(usedKeyword);
+        JTextField keywordInput = new JTextField(result.usedKeyword);
         keywordInput.setMaximumSize(new Dimension(800, 60)); // Adjusted to allow more width
         keywordInput.setAlignmentX(Component.CENTER_ALIGNMENT);
         keywordInput.setFont(bold_font);
@@ -220,14 +222,12 @@ public class DialogueBoxHandler {
         inputPanel.add(retry);
         inputPanel.add(exit);
 
-        exit.addActionListener(e -> frame.dispose());
+        exit.addActionListener(returnListener);
 
-        retry.addActionListener(new ActionListener() {
-                                    @Override
-                                    public void actionPerformed(ActionEvent e) {
-                                        VignereCipher.DecryptFromDialogue(ciphertext, keywordInput.getText(), predictedKeyword);
-                                        frame.dispose();
-                                    }
+        retry.addActionListener(e -> {
+            result.usedKeyword = keywordInput.getText();
+            VignereCipher.DecryptFromDialogue(result);
+            frame.dispose();
         });
 
         // Optional: Add an empty border for better spacing
@@ -254,7 +254,7 @@ public class DialogueBoxHandler {
         System.out.println("Here");
         System.out.println(Arrays.toString(result.predictedKeyword));
 
-        String text = String.format("<html>Permutation Cipher Analysis Results:<br/>" +
+        String text = String.format("<html>Affine Cipher Analysis Results:<br/>" +
                 "&nbsp;&nbsp;&nbsp;&nbsp; Predicted Keyword: <b>%s</b><br/>" +
                 "&nbsp;&nbsp;&nbsp;&nbsp; Used Keyword: <b>%s</b><br/>" +
                 "&nbsp;&nbsp;&nbsp;&nbsp; Used ET: <b>%s</b><html>",
@@ -429,7 +429,7 @@ public class DialogueBoxHandler {
 
         frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
 
-        String text = String.format("<html>Permutation Cipher Analysis Results:<br/>" +
+        String text = String.format("<html>Hill Cipher Analysis Results:<br/>" +
                 "&nbsp;&nbsp;&nbsp;&nbsp;Predicted Matrix: <b>%s</b><br/>" +
                 "&nbsp;&nbsp;&nbsp;&nbsp;Used Matrix: <b>%s</b><html><br/>" +
                 "&nbsp;&nbsp;&nbsp;&nbsp;[th, he]: <b>%s</b><html><br/>" +
