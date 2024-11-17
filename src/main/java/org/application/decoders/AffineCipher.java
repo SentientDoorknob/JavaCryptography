@@ -10,8 +10,8 @@ import java.util.stream.Collectors;
 /*
 
     Method Source: https://math.asu.edu/sites/default/files/affine.pdf
-    ET = int[] (index of e, index of t)
-    KEY = int[] (m, b)
+    ET  -> int[] (index of e, index of t)
+    KEY -> int[] (m, b)
 
  */
 
