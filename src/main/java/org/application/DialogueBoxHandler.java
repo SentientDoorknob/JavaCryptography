@@ -2,6 +2,7 @@ package org.application;
 
 import org.application.decoders.*;
 import org.application.results.cipher.AffineResult;
+import org.application.results.cipher.BifidResult;
 import org.application.results.cipher.PermutationResult;
 import org.application.results.cipher.VignereResult;
 import org.crypography_tools.LinearAlgebra;
@@ -388,7 +389,7 @@ public class DialogueBoxHandler {
         frame.setVisible(true);
     }
 
-    public void OpenBifidOutput(String substitutionText) {
+    public void OpenBifidOutput(BifidResult result) {
         // Open Window
         JFrame frame = new JFrame("Bifid Output");
         frame.setSize(800, 600);
@@ -401,7 +402,7 @@ public class DialogueBoxHandler {
         label.setAlignmentX(Component.LEFT_ALIGNMENT);
         label.setBorder(new EmptyBorder(5, 0, 5, 0));
 
-        JTextArea substitutionOutput = new JTextArea(substitutionText);
+        JTextArea substitutionOutput = new JTextArea(result.plaintext);
         substitutionOutput.setLineWrap(true);
         substitutionOutput.setAlignmentX(Component.LEFT_ALIGNMENT);
         substitutionOutput.setEditable(false);

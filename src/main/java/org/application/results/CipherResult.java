@@ -2,7 +2,7 @@ package org.application.results;
 
 import org.crypography_tools.Callback;
 
-public abstract class CipherResult<KeywordType, ChildType> {
+public abstract class CipherResult<KeywordType, ChildType> extends ConversionResult<ChildType> {
     public String ciphertext;
     public String plaintext;
 
@@ -14,8 +14,7 @@ public abstract class CipherResult<KeywordType, ChildType> {
     public void ReAnalyse() {}
 
     public CipherResult(String ciphertext, String plaintext, KeywordType keyword, Callback<ChildType> callback) {
-        this.ciphertext = ciphertext;
-        this.plaintext = plaintext;
+        super(ciphertext, plaintext);
         this.predictedKeyword = keyword;
         this.usedKeyword = keyword;
         this.callback = callback;

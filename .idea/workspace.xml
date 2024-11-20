@@ -9,13 +9,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a228f945-501f-4b89-90c4-094fa1f5582c" name="Changes" comment="refactored VignereCipher">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/application/decoders/RailfenceCipher.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/application/results/cipher/PermutationResult.java" afterDir="false" />
+    <list default="true" id="a228f945-501f-4b89-90c4-094fa1f5582c" name="Changes" comment="added railfencecipher">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/application/results/ConversionResult.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/application/results/cipher/BifidResult.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/application/DialogueBoxHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/DialogueBoxHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/application/decoders/AffineCipher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/decoders/AffineCipher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/application/decoders/PermutationCipher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/decoders/PermutationCipher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/JavaCryptography_jar/JavaCryptography.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/JavaCryptography_jar/JavaCryptography.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/application/decoders/BifidCipher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/decoders/BifidCipher.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -398,7 +397,31 @@
       <option name="project" value="LOCAL" />
       <updated>1731837133296</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="refactored PermutationCIpher">
+      <option name="closed" value="true" />
+      <created>1731840447264</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1731840447264</updated>
+    </task>
+    <task id="LOCAL-00038" summary="refactored AffineCipher">
+      <option name="closed" value="true" />
+      <created>1731840466536</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1731840466536</updated>
+    </task>
+    <task id="LOCAL-00039" summary="added railfencecipher">
+      <option name="closed" value="true" />
+      <created>1731840484590</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1731840484590</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -413,9 +436,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="finished vignere interface" />
-    <MESSAGE value="added affine cipher" />
-    <MESSAGE value="whoopsies finished that" />
     <MESSAGE value="rebuildeded artefacts" />
     <MESSAGE value="added cipher choise GUI" />
     <MESSAGE value="added permutaion ciphertext evaluation" />
@@ -438,7 +458,10 @@
     <MESSAGE value="added cipherresult" />
     <MESSAGE value="given in to intellij warnings" />
     <MESSAGE value="refactored VignereCipher" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactored VignereCipher" />
+    <MESSAGE value="refactored PermutationCIpher" />
+    <MESSAGE value="refactored AffineCipher" />
+    <MESSAGE value="added railfencecipher" />
+    <option name="LAST_COMMIT_MESSAGE" value="added railfencecipher" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
