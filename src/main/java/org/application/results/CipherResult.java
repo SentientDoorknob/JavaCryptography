@@ -15,6 +15,8 @@ public abstract class CipherResult<KeywordType, ChildType> extends ConversionRes
 
     public CipherResult(String ciphertext, String plaintext, KeywordType keyword, Callback<ChildType> callback) {
         super(ciphertext, plaintext);
+        this.ciphertext = ciphertext;
+        this.plaintext = plaintext;
         this.predictedKeyword = keyword;
         this.usedKeyword = keyword;
         this.callback = callback;

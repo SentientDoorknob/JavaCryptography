@@ -325,6 +325,12 @@ public class DialogueBoxHandler {
     }
 
     public void OpenPermutationOutput(PermutationResult result) {
+        result.plaintext = result.plaintext == null || result.plaintext.isEmpty()
+                ? "No plaintext to display. Please retry with a valid ciphertext."
+                : result.plaintext;
+
+
+        System.out.println(result.plaintext);
         // Open Window
         JFrame frame = new JFrame("Permutation Cipher Output");
         frame.setSize(800, 600);
@@ -414,7 +420,7 @@ public class DialogueBoxHandler {
         buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.X_AXIS));
 
         JButton exitButton = new JButton("Exit");
-        exitButton.addActionListener(x -> frame.dispose());
+        exitButton.addActionListener(returnListener);
 
         buttonPanel.add(new JLabel(""));
         buttonPanel.add(Box.createHorizontalGlue());

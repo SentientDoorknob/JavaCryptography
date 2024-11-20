@@ -5,6 +5,7 @@ import org.application.results.cipher.PermutationResult;
 import org.crypography_tools.Digram;
 import org.crypography_tools.Tools;
 
+import java.sql.SQLOutput;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
@@ -92,7 +93,7 @@ public class PermutationCipher {
             keyword[i] = emptyColumn;
 
             double maxValue = Arrays.stream(pairs[emptyColumn]).max().orElseThrow();
-            emptyColumn = Arrays.stream(pairs[emptyColumn]).boxed().collect(Collectors.toList()).indexOf(maxValue);
+            emptyColumn = Arrays.stream(pairs[emptyColumn]).boxed().toList().indexOf(maxValue);
         }
 
         return keyword;

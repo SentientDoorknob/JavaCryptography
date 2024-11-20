@@ -9,12 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a228f945-501f-4b89-90c4-094fa1f5582c" name="Changes" comment="added railfencecipher">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/application/results/ConversionResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/application/results/cipher/BifidResult.java" afterDir="false" />
+    <list default="true" id="a228f945-501f-4b89-90c4-094fa1f5582c" name="Changes" comment="refactored BifidCipher">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/JavaCryptography_jar/JavaCryptography.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/JavaCryptography_jar/JavaCryptography.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/application/decoders/BifidCipher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/decoders/BifidCipher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/application/DialogueBoxHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/DialogueBoxHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/application/decoders/PermutationCipher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/decoders/PermutationCipher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/application/results/CipherResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/results/CipherResult.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -421,7 +420,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731840484590</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="refactored BifidCipher">
+      <option name="closed" value="true" />
+      <created>1732139453362</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1732139453362</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -436,7 +443,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="rebuildeded artefacts" />
     <MESSAGE value="added cipher choise GUI" />
     <MESSAGE value="added permutaion ciphertext evaluation" />
     <MESSAGE value="added permutation decryption" />
@@ -461,7 +467,8 @@
     <MESSAGE value="refactored PermutationCIpher" />
     <MESSAGE value="refactored AffineCipher" />
     <MESSAGE value="added railfencecipher" />
-    <option name="LAST_COMMIT_MESSAGE" value="added railfencecipher" />
+    <MESSAGE value="refactored BifidCipher" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactored BifidCipher" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
