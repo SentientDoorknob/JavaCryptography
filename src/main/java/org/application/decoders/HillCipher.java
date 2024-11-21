@@ -24,17 +24,6 @@ import java.util.Map;
 
 public class HillCipher {
 
-    // Util ->
-    private static String[] ThheMatrixToString(double[][] thhe) {
-        return new String[] {"" + ((char)((int)thhe[0][0] + 'a')) + ((char)((int)thhe[1][0] + 'a')),
-                "" + ((char)((int)thhe[0][1] + 'a')) + ((char)((int)thhe[1][1] + 'a'))};
-    }
-
-    private static double[][] ThheStringToMatrix(String[] thhe) {
-        System.out.println(Arrays.toString(thhe));
-        return new double[][] {{thhe[0].charAt(0) - 'a', thhe[1].charAt(0) - 'a'}, {thhe[0].charAt(1) - 'a', thhe[1].charAt(1) - 'a'}};
-    }
-
 
     public static double[][] GetEncryptionMatrix(double[][] thhe) {
         double[][] con = new double[][] {{19, 7}, {7, 4}};
