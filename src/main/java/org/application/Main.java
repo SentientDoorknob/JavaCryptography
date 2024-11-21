@@ -18,9 +18,8 @@ public class Main {
 
         boxHandler.OpenCipherInputDialogue(ciphers);
 
-        int[][] c = new int[][] {{1}, {2}, {3,4}, {5,6}};
-
-        System.out.println(Arrays.deepToString(NihilistCipher.GetKeywordPossibilities(c)));
+        String test = "hello";
+        System.out.println(Arrays.toString(Tools.DecimalFrequency(test)));
 
     }
 

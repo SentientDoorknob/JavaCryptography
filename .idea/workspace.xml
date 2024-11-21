@@ -11,9 +11,8 @@
   <component name="ChangeListManager">
     <list default="true" id="a228f945-501f-4b89-90c4-094fa1f5582c" name="Changes" comment="refactored BifidCipher">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/application/DialogueBoxHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/DialogueBoxHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/application/decoders/PermutationCipher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/decoders/PermutationCipher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/application/results/CipherResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/results/CipherResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/application/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/crypography_tools/Tools.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/crypography_tools/Tools.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -428,7 +427,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732139453362</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="refactored BifidCipher">
+      <option name="closed" value="true" />
+      <created>1732140356440</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1732140356440</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

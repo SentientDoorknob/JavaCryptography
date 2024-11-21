@@ -280,9 +280,14 @@ public class Tools {
 
         double sum = 0;
         for (int i = 0; i < length; i++) {
-            sum += (observed[i] - expected[i]) * (observed[i] - expected[i]) / 2;
+            sum += (observed[i] - expected[i]) * (observed[i] - expected[i]) / expected[i];
         }
 
         return sum;
+    }
+
+    public static double XSquaredEnglish(String text) {
+        double[] observed = DecimalFrequency(text);
+        return XSquared(observed, EnglishLetterFrequencies);
     }
 }
