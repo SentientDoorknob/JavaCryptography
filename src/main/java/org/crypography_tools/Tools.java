@@ -7,8 +7,6 @@ import java.util.HashMap;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import static java.util.Collections.sort;
-
 public class Tools {
 
     public static char[] Alphabet = "abcdefghijklmnopqrstuvwxyz".toCharArray();
@@ -29,15 +27,15 @@ public class Tools {
 
     public static String ApplyToLetters(String input, LambdaChar app) {
         return input.chars()
-                .filter(c -> Character.isLetter(c))
+                .filter(Character::isLetter)
                 .mapToObj(c -> (char) c)
-                .map(c -> app.ly(c))
+                .map(app::ly)
                 .collect(StringBuilder::new, StringBuilder::append, StringBuilder::append)
                 .toString();
     }
 
     public static String Format(String text) {
-        LambdaChar filter = (c) -> Character.isLetter(c) ? Character.toLowerCase(c) : null;
+        LambdaChar filter = (c) -> Character.isLetter(c) ? Character.toLowerCase(c) : 'q';
         return ApplyToLetters(text, filter);
     }
 
@@ -166,8 +164,7 @@ public class Tools {
     }
 
     public static double[] GetColumn(double[][] matrix, int column) {
-        return IntStream.range(0, matrix.length)
-                .mapToDouble(i -> matrix[i][column]).toArray();
+        return Arrays.stream(matrix).mapToDouble(doubles -> doubles[column]).toArray();
     }
 
     public static int[] ReducePermutationKeyword(int[] keyword) {
@@ -200,7 +197,7 @@ public class Tools {
 
     public static String[] SplitDigraphs(String text) {
         char[] chars = text.toCharArray();
-        int numDigraphs = (int) text.length() / 2;
+        int numDigraphs = text.length() / 2;
 
         String[] digraphs = new String[numDigraphs];
 
@@ -212,7 +209,7 @@ public class Tools {
     }
 
     public static void DisplayHashmap(HashMap<String, Integer> map) {
-        map.entrySet().stream()
+        map.entrySet()
                 .forEach(entry -> System.out.println("Key: " + entry.getKey() + ", Value: " + entry.getValue()));
     }
 

@@ -9,9 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a228f945-501f-4b89-90c4-094fa1f5582c" name="Changes" comment="refactored BifidCipher">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/application/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/Main.java" afterDir="false" />
+    <list default="true" id="a228f945-501f-4b89-90c4-094fa1f5582c" name="Changes" comment="fixed chi squared function. It was suprisingly broken.">
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/application/decoders/VignereCipher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/decoders/VignereCipher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/crypography_tools/Tools.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/crypography_tools/Tools.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -435,7 +434,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732140356440</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="fixed chi squared function. It was suprisingly broken.">
+      <option name="closed" value="true" />
+      <created>1732198948807</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1732198948807</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -450,7 +457,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added cipher choise GUI" />
     <MESSAGE value="added permutaion ciphertext evaluation" />
     <MESSAGE value="added permutation decryption" />
     <MESSAGE value="added bifid conversion" />
@@ -475,14 +481,15 @@
     <MESSAGE value="refactored AffineCipher" />
     <MESSAGE value="added railfencecipher" />
     <MESSAGE value="refactored BifidCipher" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactored BifidCipher" />
+    <MESSAGE value="fixed chi squared function. It was suprisingly broken." />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed chi squared function. It was suprisingly broken." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/crypography_tools/Tools.java</url>
-          <line>90</line>
+          <line>88</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">

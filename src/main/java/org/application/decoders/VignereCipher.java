@@ -73,9 +73,7 @@ public class VignereCipher {
 
             for (int i = 0; i < 26; i++) {
                 coset = Tools.ShiftLetters(coset, -1);
-                double[] observedFrequency = Tools.DecimalFrequency(coset);
-
-                double cosetX2 = Tools.XSquared(observedFrequency, Tools.EnglishLetterFrequencies);
+                double cosetX2 = Tools.XSquaredEnglish(coset);
 
                 if (cosetX2 < minX2) {
                     minX2 = cosetX2;
