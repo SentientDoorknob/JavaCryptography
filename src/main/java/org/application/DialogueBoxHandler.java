@@ -225,7 +225,7 @@ public class DialogueBoxHandler {
 
         retry.addActionListener(e -> {
             result.usedKeyword = keywordInput.getText();
-            VignereCipher.DecryptFromDialogue(result);
+            result.ReAnalyse();
             frame.dispose();
         });
 
@@ -378,7 +378,7 @@ public class DialogueBoxHandler {
                             .split(","))
                             .mapToInt(Integer::parseInt).toArray();
 
-            PermutationCipher.DecryptFromResultsDialogue(result);
+            result.ReAnalyse();
             frame.dispose();
         });
 

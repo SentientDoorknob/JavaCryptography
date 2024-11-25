@@ -9,14 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a228f945-501f-4b89-90c4-094fa1f5582c" name="Changes" comment="im suffering">
+    <list default="true" id="a228f945-501f-4b89-90c4-094fa1f5582c" name="Changes" comment="refactored hill and added swap">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/application/DialogueBoxHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/DialogueBoxHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/application/decoders/HillCipher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/decoders/HillCipher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/application/results/cipher/HillResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/results/cipher/HillResult.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/application/results/cipher/PermutationResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/results/cipher/PermutationResult.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/application/results/cipher/VignereResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/results/cipher/VignereResult.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/crypography_tools/LinearAlgebra.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/crypography_tools/LinearAlgebra.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -479,7 +474,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732200054262</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="refactored hill and added swap">
+      <option name="closed" value="true" />
+      <created>1732562025760</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1732562025760</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -494,7 +497,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fixed bifidcipher.java" />
     <MESSAGE value="added hill cipher" />
     <MESSAGE value="added linear algebra thingy" />
     <MESSAGE value="added hilld cipher decryption" />
@@ -519,7 +521,8 @@
     <MESSAGE value="great time to refactor this mess" />
     <MESSAGE value="help me" />
     <MESSAGE value="im suffering" />
-    <option name="LAST_COMMIT_MESSAGE" value="im suffering" />
+    <MESSAGE value="refactored hill and added swap" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactored hill and added swap" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
