@@ -1,10 +1,7 @@
 package org.application;
 
 import org.application.decoders.*;
-import org.application.results.cipher.AffineResult;
-import org.application.results.cipher.BifidResult;
-import org.application.results.cipher.PermutationResult;
-import org.application.results.cipher.VignereResult;
+import org.application.results.cipher.*;
 import org.crypography_tools.LinearAlgebra;
 import org.crypography_tools.Tools;
 
@@ -434,7 +431,7 @@ public class DialogueBoxHandler {
         frame.setVisible(true);
     }
 
-    public void OpenHillOutput(double[][] predictedMatrix, double[][] usedMatrix, String[] thhe, String plaintext, String ciphertext) {
+    public void OpenHillOutput(HillResult result) {
         JFrame frame = new JFrame("Hill Cipher Output");
         frame.setSize(800, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -447,17 +444,17 @@ public class DialogueBoxHandler {
                 "&nbsp;&nbsp;&nbsp;&nbsp;Used Matrix: <b>%s</b><html><br/>" +
                 "&nbsp;&nbsp;&nbsp;&nbsp;[th, he]: <b>%s</b><html><br/>" +
                 "&nbsp;&nbsp;&nbsp;&nbsp;Index of Coincidence: <b>%.5f</b><html>"
-                                                                        , LinearAlgebra.MatrixToString(predictedMatrix, true)
-                                                                        , LinearAlgebra.MatrixToString(usedMatrix, true)
-                                                                        , Arrays.toString(thhe)
-                                                                        , Tools.IndexOfCoincidence(plaintext));
+                                                                        , LinearAlgebra.MatrixToString(result.predictedKeyword, true)
+                                                                        , LinearAlgebra.MatrixToString(result.usedKeyword, true)
+                                                                        , Arrays.deepToString(LinearAlgebra.ToInt(result.thhe))
+                                                                        , Tools.IndexOfCoincidence(result.plaintext));
 
         JLabel hillInfo = new JLabel(text);
         hillInfo.setAlignmentX(Component.CENTER_ALIGNMENT);
         hillInfo.setFont(plain_font);
         hillInfo.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-        JTextArea plaintextDisplay = new JTextArea(plaintext);
+        JTextArea plaintextDisplay = new JTextArea(result.plaintext);
         plaintextDisplay.setLineWrap(true);
         plaintextDisplay.setEditable(false);
         plaintextDisplay.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -469,22 +466,38 @@ public class DialogueBoxHandler {
         inputPanel.setLayout(new BoxLayout(inputPanel, BoxLayout.X_AXIS));
 
         // Input field for the keyword
-        JTextField keywordInput = new JTextField(Arrays.toString(thhe));
+        JTextField keywordInput = new JTextField(Arrays.deepToString(LinearAlgebra.ToInt(result.thhe)));
         keywordInput.setMaximumSize(new Dimension(800, 60)); // Adjusted to allow more width
         keywordInput.setAlignmentX(Component.CENTER_ALIGNMENT);
         keywordInput.setFont(bold_font);
 
+        JButton swap = new JButton("Swap");
         JButton retry = new JButton("Retry");
         JButton exit = new JButton("Exit");
 
         inputPanel.add(keywordInput);
+        inputPanel.add(swap);
         inputPanel.add(retry);
         inputPanel.add(exit);
 
-        exit.addActionListener(e -> frame.dispose());
+        exit.addActionListener(returnListener);
 
         retry.addActionListener(e -> {
-            HillCipher.DecryptFromResultsDialogue(ciphertext, keywordInput.getText().replaceAll("[^[a-z]|,]", "").split(","), predictedMatrix);
+            // [^[a-z]|,]
+            String[] thheReading = keywordInput.getText().replaceAll("[/[\\[\\]']+/g]", "").split(",");
+            double[] thheArray = Arrays.stream(thheReading).mapToDouble(Double::parseDouble).toArray();
+
+            result.thhe = new double[][]{{thheArray[0], thheArray[1]}, {thheArray[2], thheArray[3]}};
+            result.ReAnalyse();
+            frame.dispose();
+        });
+
+        swap.addActionListener(e -> {
+            double[] temp = LinearAlgebra.GetColumn(result.thhe, 0);
+            result.thhe = LinearAlgebra.SetColumn(result.thhe, LinearAlgebra.GetColumn(result.thhe, 1), 0);
+            result.thhe = LinearAlgebra.SetColumn(result.thhe, temp, 1);
+
+            result.ReAnalyse();
             frame.dispose();
         });
 

@@ -6,7 +6,11 @@ import org.crypography_tools.Callback;
 
 public class HillResult extends CipherResult<double[][], HillResult> {
 
-    double[][] thhe;
+    public double[][] thhe;
+
+    public void ReAnalyse() {
+        callback.execute(this);
+    }
 
     public HillResult(String ciphertext, String plaintext, double[][] keyword, double[][] thhe, Callback<HillResult> callback) {
         super(ciphertext, plaintext, keyword, callback);

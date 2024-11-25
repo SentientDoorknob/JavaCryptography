@@ -113,11 +113,29 @@ public class LinearAlgebra {
         return Map(inverse, x -> Math.floorMod((int) x, mod));
     }
 
-    public static void DisplayMatrix (double[][] matrix) {
+    public static void DisplayMatrix(double[][] matrix) {
         for (double[] row : matrix) {
             String row_string = Arrays.stream(row).mapToObj(String::valueOf).collect(Collectors.joining(" "));
             System.out.printf("| %s |\n", row_string);
         }
+    }
+
+    public static double[] GetColumn(double[][] matrix, int index) {
+        double[] column = new double[matrix.length];
+
+        for (int i = 0; i < matrix.length; i++) {
+            column[i] = matrix[i][index];
+        }
+
+        return column;
+    }
+
+    public static double[][] SetColumn(double[][] matrix, double[] column, int index) {
+        for (int i = 0; i < column.length; i++) {
+            matrix[i][index] = column[i];
+        }
+
+        return matrix;
     }
 
     public static String MatrixToString(double[][] matrix) {

@@ -9,9 +9,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a228f945-501f-4b89-90c4-094fa1f5582c" name="Changes" comment="i mean i already had the function">
+    <list default="true" id="a228f945-501f-4b89-90c4-094fa1f5582c" name="Changes" comment="im suffering">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/application/DialogueBoxHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/DialogueBoxHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/application/decoders/HillCipher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/decoders/HillCipher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/application/results/cipher/HillResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/results/cipher/HillResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/application/results/cipher/PermutationResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/results/cipher/PermutationResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/application/results/cipher/VignereResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/results/cipher/VignereResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/crypography_tools/LinearAlgebra.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/crypography_tools/LinearAlgebra.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -450,7 +455,31 @@
       <option name="project" value="LOCAL" />
       <updated>1732199164847</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="great time to refactor this mess">
+      <option name="closed" value="true" />
+      <created>1732199809097</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1732199809097</updated>
+    </task>
+    <task id="LOCAL-00045" summary="help me">
+      <option name="closed" value="true" />
+      <created>1732199830590</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1732199830590</updated>
+    </task>
+    <task id="LOCAL-00046" summary="im suffering">
+      <option name="closed" value="true" />
+      <created>1732200054262</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1732200054262</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -465,9 +494,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added permutation decryption" />
-    <MESSAGE value="added bifid conversion" />
-    <MESSAGE value="fixed  dialogue box issue" />
     <MESSAGE value="fixed bifidcipher.java" />
     <MESSAGE value="added hill cipher" />
     <MESSAGE value="added linear algebra thingy" />
@@ -490,7 +516,10 @@
     <MESSAGE value="refactored BifidCipher" />
     <MESSAGE value="fixed chi squared function. It was suprisingly broken." />
     <MESSAGE value="i mean i already had the function" />
-    <option name="LAST_COMMIT_MESSAGE" value="i mean i already had the function" />
+    <MESSAGE value="great time to refactor this mess" />
+    <MESSAGE value="help me" />
+    <MESSAGE value="im suffering" />
+    <option name="LAST_COMMIT_MESSAGE" value="im suffering" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -1,6 +1,7 @@
 package org.application.decoders;
 
 import org.application.Main;
+import org.application.results.cipher.HillResult;
 import org.crypography_tools.LinearAlgebra;
 import org.crypography_tools.Tools;
 
@@ -18,25 +19,15 @@ import java.util.Map;
     ENCM -> Encryption Matrix.
     DCRM -> Decryption Matrix.
     THHE -> double{{T, H}, {H, E}}
-    THHES -> String{T, H, H, E}
 
  */
 
 public class HillCipher {
 
+    // CIPHERTEXT -> THHE -> DCRM -> PLAINTEXT
+    //                    -> ENCM
 
-    public static double[][] GetEncryptionMatrix(double[][] thhe) {
-        double[][] con = new double[][] {{19, 7}, {7, 4}};
-
-        return LinearAlgebra.MxMod(thhe, LinearAlgebra._2x2InverseMod(con, 26), 26);
-    }
-
-    public static double[][] GetDecryptionMatrix(double[][] thhe) {
-        double[][] con = new double[][] {{19, 7}, {7, 4}};
-
-        return LinearAlgebra.MxMod(con, LinearAlgebra._2x2InverseMod(thhe, 26), 26);
-    }
-
+    // Returns THHE. Assumes TH is the most common digraph, and HE the second.
     public static double[][] GetThheMatrix(String ciphertext) {
         String[] digraphs = Tools.SplitDigraphs(ciphertext);
 
@@ -50,6 +41,21 @@ public class HillCipher {
         return new double[][] {{th.charAt(0) - 'a', he.charAt(0) - 'a'}, {th.charAt(1) - 'a', he.charAt(1) - 'a'}};
     }
 
+    // Returns ENCM. Solves for ENCM by subtracting equations. See method.
+    public static double[][] GetEncryptionMatrix(double[][] thhe) {
+        double[][] con = new double[][] {{19, 7}, {7, 4}};
+
+        return LinearAlgebra.MxMod(thhe, LinearAlgebra._2x2InverseMod(con, 26), 26);
+    }
+
+    // Returns DCRM. Solves for DCRM (inverse of ENCM). See method.
+    public static double[][] GetDecryptionMatrix(double[][] thhe) {
+        double[][] con = new double[][] {{19, 7}, {7, 4}};
+
+        return LinearAlgebra.MxMod(con, LinearAlgebra._2x2InverseMod(thhe, 26), 26);
+    }
+
+    // Returns PLAINTEXT. Multiplies digraphs by DCRM. See method.
     public static String DecryptWithKeyMatrix(String ciphertext, double[][] matrix) {
         String[] digraphs = Tools.SplitDigraphs(ciphertext);
         String plaintext = "";
@@ -65,14 +71,13 @@ public class HillCipher {
 
 
 
-    public static void DecryptFromResultsDialogue(String ciphertext, String[] thheString, double[][] predictedMatrix) {
-        double[][] thhe = ThheStringToMatrix(thheString);
+    public static void DecryptFromResultsDialogue(HillResult result) {
 
-        double[][] decryptionMatrix = GetDecryptionMatrix(thhe);
-        double[][] encryptionMatrix = GetEncryptionMatrix(thhe);
+        double[][] decryptionMatrix = GetDecryptionMatrix(result.thhe);
+        double[][] encryptionMatrix = GetEncryptionMatrix(result.thhe);
 
-        String plaintext = DecryptWithKeyMatrix(ciphertext, decryptionMatrix);
-        Main.boxHandler.OpenHillOutput(predictedMatrix, encryptionMatrix, thheString, plaintext, ciphertext);
+        result.plaintext = DecryptWithKeyMatrix(result.ciphertext, decryptionMatrix);
+        Main.boxHandler.OpenHillOutput(result);
     }
 
     public static void DecryptWithResultsDialogue(String ciphertext) {
@@ -84,6 +89,8 @@ public class HillCipher {
 
         String plaintext = DecryptWithKeyMatrix(ciphertext, decryptionMatrix);
 
-        Main.boxHandler.OpenHillOutput(encryptionMatrix, encryptionMatrix, thheString, plaintext, ciphertext);
+        HillResult result = new HillResult(ciphertext, plaintext, encryptionMatrix, thhe, HillCipher::DecryptFromResultsDialogue);
+
+        Main.boxHandler.OpenHillOutput(result);
     }
 }
