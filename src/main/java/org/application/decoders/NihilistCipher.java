@@ -14,6 +14,8 @@ import static java.lang.Math.max;
 
 public class NihilistCipher {
 
+    // Okay so im like not doing this
+
     public static boolean[] EvaluateUnits(int[] coset) {
         boolean[] hasEnding = new boolean[10];
 
@@ -229,6 +231,7 @@ public class NihilistCipher {
 
         return String.join("", chars);
     }
+
 
     public static void ConvertWithResultsDialogue(String ciphertext) {
         int[][] keywords = GetKeywords(ciphertext);
