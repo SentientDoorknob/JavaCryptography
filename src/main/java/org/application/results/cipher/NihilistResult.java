@@ -4,8 +4,16 @@ import org.application.results.CipherResult;
 import org.crypography_tools.Callback;
 
 public class NihilistResult extends CipherResult<int[], NihilistResult> {
-    public NihilistResult(String ciphertext, String plaintext, int[] keyword, Callback<NihilistResult> callback) {
+    public void ReAnalyse() {
+        callback.execute(this);
+    }
+
+    public double IoC;
+    public int[][] possibleKeywords;
+
+    public NihilistResult(String ciphertext, String plaintext, int[][] _possibleKeywords, int[] keyword, double ioc, Callback<NihilistResult> callback) {
         super(ciphertext, plaintext, keyword, callback);
-        // no.
+        IoC = ioc;
+        possibleKeywords = _possibleKeywords;
     }
 }

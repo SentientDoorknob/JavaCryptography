@@ -13,6 +13,7 @@ import static java.lang.Math.abs;
 
     Method Source: https://pages.mtu.edu/~shene/NSF-4/Tutorial/VIG/Vig-Base.html and subsequent articles
 
+    IOC -> Index of Coincidence
     IOCD -> Calculated IoC - English IoC.
     KEYLEN -> Length of keyword.
     KEY -> String of letters, not AIs.

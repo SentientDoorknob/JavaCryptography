@@ -6,6 +6,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class Tools {
 
@@ -64,9 +65,9 @@ public class Tools {
     }
 
     public static int[][] MakeIntArrayCosets(int[] text, int num) {
-        int[][] cosets = new int[num][text.length / num - num];
+        int[][] cosets = new int[num][(int) text.length / num];
 
-        for (int i = 0; i < text.length - num; i++) {
+        for (int i = 0; i < text.length; i++) {
             try {cosets[i % num][i / num] = text[i]; }
             catch (IndexOutOfBoundsException ignored) {}
         }
@@ -225,33 +226,20 @@ public class Tools {
         return trues;
     }
 
-    public static int[] GetMaximumSpan(boolean[] bools) {
-        int[] maxSpan = new int[2];
-        // span, start
+    public static int[] GetSpan(boolean[] bools) {
+        int min = 10;
+        int max = -1;
 
-        int[] tempSpan = new int[2];
-        for (int i = 0; i < bools.length; i++) {
-            boolean b = bools[i];
-
-            if (!b) {
-                tempSpan = new int[] {0, 0};
-                continue;
-            }
-
-            if (Arrays.equals(tempSpan, new int[]{0, 0})) {
-                tempSpan[0] = 1;
-                tempSpan[1] = i;
-                continue;
-            }
-
-            tempSpan[0]++;
-
-            if (tempSpan[0] > maxSpan[0]) {
-                maxSpan = tempSpan.clone();
-            }
+        for (int i = 1; i < 11; i++) {
+            if (!bools[i % 10]) continue;
+            if (i < min) min = i;
+            if (i > max) max = i;
         }
 
-        return maxSpan;
+        int span_length = max - min + 1;
+        min = min % 10;
+
+        return new int[] {min, span_length};
     }
 
     public static <T> T[][] LLtoAA(ArrayList<ArrayList<T>> l, Class<T> clazz) {
@@ -286,5 +274,51 @@ public class Tools {
     public static double XSquaredEnglish(String text) {
         double[] observed = DecimalFrequency(text);
         return XSquared(observed, EnglishLetterFrequencies);
+    }
+
+    public static int EvaluateTableComponent(boolean[][] comp) {
+        int score = 0;
+        for (boolean[] coset : comp) {
+            for (int i = 0; i < 10; i++) {
+                int prev = Math.floorMod(i - 1, 10);
+                int next = Math.floorMod(i + 1, 10);
+
+                if (!coset[i]) {score++; continue;}
+
+                if (!coset[prev] || !coset[next]) score++;
+            }
+        }
+
+        return score;
+    }
+
+    public static int[] GetSpanStartingPossibilities(int[] span) {
+        if (span[1] >= 5) return new int[] {span[0] - 1};
+
+        int variance = 5 - span[1];
+        ArrayList<Integer> points = new ArrayList<>();
+
+        for (int i = 0; i < variance + 1; i++) {
+            int point = span[0] - i - 1;
+            if (point < 2) break;
+            points.add(point);
+        }
+
+        return points.stream().mapToInt(Integer::intValue).toArray();
+    }
+
+    public static Stream<int[]> CartesianProduct(int[][] sets, int index) {
+        if (index == sets.length) {
+            return Stream.of(new int[0]);
+        }
+
+        return Arrays.stream(sets[index]).boxed().flatMap(element ->
+                CartesianProduct(sets, index + 1).map(rest -> {
+                    int[] result = new int[rest.length + 1];
+                    result[0] = element;
+                    System.arraycopy(rest, 0, result, 1, rest.length);
+                    return result;
+                })
+        );
     }
 }
